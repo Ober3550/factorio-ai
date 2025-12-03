@@ -5,10 +5,10 @@
   "description": "An exercise in defining the process of composing tools to design factorio blueprints",
   "main": "index.js",
   "scripts": {
-    "decode-bp": "node --loader ts-node/esm scripts/decode-blueprint.ts",
-    "bp-ascii": "node --loader ts-node/esm scripts/blueprint-ascii.ts",
-    "decode-and-ascii": "node --loader ts-node/esm scripts/run-decode-and-ascii.ts",
-    "test-ascii": "node --loader ts-node/esm scripts/test-ascii.ts"
+  "decode-bp": "node --no-warnings --loader ts-node/esm scripts/decode-blueprint.ts",
+    "bp-ascii": "node --no-warnings --loader ts-node/esm scripts/blueprint-ascii.ts",
+    "decode-and-ascii": "node --no-warnings --loader ts-node/esm scripts/run-decode-and-ascii.ts",
+    "test-ascii": "node --no-warnings --loader ts-node/esm scripts/test-ascii.ts"
   },
   "repository": {
     "type": "git",

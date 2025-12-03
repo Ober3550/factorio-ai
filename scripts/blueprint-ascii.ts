@@ -15,6 +15,10 @@ const CHAR_MAP: Record<string, string> = {
   inserter: 'i',
   pipe: 'p',
   'transport-belt': 'b',
+  'stone-furnace': 'F',
+  'assembling-machine-1': 'A',
+  'assembling-machine-2': 'A',
+  'assembling-machine-3': 'A',
 }
 
 // Size map in tiles (width, height) in default orientation
@@ -23,6 +27,10 @@ const SIZE_MAP: Record<string, [number, number]> = {
   // Restored original sizes: boiler 3x2, steam-engine 3x5
   boiler: [3, 2],
   'steam-engine': [3, 5],
+  'stone-furnace': [2, 2],
+  'assembling-machine-1': [3, 3],
+  'assembling-machine-2': [3, 3],
+  'assembling-machine-3': [3, 3],
   // default 1x1 for simple entities
   'small-electric-pole': [1, 1],
   inserter: [1, 1],
@@ -33,6 +41,9 @@ const SIZE_MAP: Record<string, [number, number]> = {
 const PRIORITY: Record<string, number> = {
   'steam-engine': 5,
   boiler: 4,
+  'assembling-machine-1': 4,
+  'assembling-machine-2': 4,
+  'assembling-machine-3': 4,
   'small-electric-pole': 3,
   inserter: 2,
   pipe: 1,

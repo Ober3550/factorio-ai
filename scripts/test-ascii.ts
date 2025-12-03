@@ -18,7 +18,8 @@ async function findGoldenFiles(root: string) {
 }
 
 function runAscii(jsonPath: string, outPath: string) {
-  const res = spawnSync('node', ['--loader', 'ts-node/esm', path.join('scripts', 'blueprint-ascii.ts'), '--quiet', '--out', outPath, jsonPath], { stdio: 'inherit' })
+  // Include --no-warnings so spawned node processes don't print loader/deprecation warnings.
+  const res = spawnSync('node', ['--no-warnings', '--loader', 'ts-node/esm', path.join('scripts', 'blueprint-ascii.ts'), '--quiet', '--out', outPath, jsonPath], { stdio: 'inherit' })
   if (res.error) throw res.error
   return res.status ?? 0
 }
