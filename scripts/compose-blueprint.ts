@@ -107,7 +107,17 @@ function applyTransform(e: Entity, flipX: boolean, flipY: boolean, rot: number, 
   const nx = r.x + tx
   const ny = r.y + ty
 
-  const out: Entity = { ...e, position: { x: nx, y: ny } }
+  // Snap positions to the nearest 0.5 tile so floating-point noise from
+  // rotations/translations doesn't produce slightly different coordinates that
+  // prevent deduplication of shared-edge entities (especially belts).
+  function snapToHalf(n: number) {
+    return Math.round(n * 2) / 2
+  }
+
+  const sx = snapToHalf(nx)
+  const sy = snapToHalf(ny)
+
+  const out: Entity = { ...e, position: { x: sx, y: sy } }
 
   if (typeof e.direction === 'number') {
     const step = Math.floor(e.direction / 4) & 3
@@ -205,17 +215,28 @@ async function main() {
       const tx = c * stepX
       const ty = r * stepY
       // optionally rotate bottom half of the composed grid by 180deg so adjacent units can share belts
+      // When rotating the bottom half by 180°, also horizontally flip that tile so
+      // belt directions remain consistent (belts need a mirror flip after a
+      // 180° rotation to keep their flow orientation matching the rest of the
+      // composed layout).
       let tileRot = rot
-      if (rotateBottom && r >= Math.floor(rows / 2)) tileRot = (rot + 2) & 3
+      let tileFlipX = flipX
+      let tileFlipY = flipY
+      if (rotateBottom && r >= Math.floor(rows / 2)) {
+        tileRot = (rot + 2) & 3
+        tileFlipX = !flipX
+      }
 
-      // compute this tile's footprint so we can align its xStart/yStart to the base footprint
-      const tileFoot = footprintBounds(normEntities, tileRot, flipX, flipY)
+  // compute this tile's footprint so we can align its xStart/yStart to the base footprint
+  // Use the per-tile flip flags (tileFlipX/tileFlipY) so rotated+flipped
+  // bottom tiles align correctly with the top row.
+  const tileFoot = footprintBounds(normEntities, tileRot, tileFlipX, tileFlipY)
       const alignX = baseFoot.xStart - tileFoot.xStart
       const alignY = baseFoot.yStart - tileFoot.yStart
 
       for (const e of normEntities) {
         // apply transform then add extra alignment shift so rotated tiles sit under/over correctly
-        const ne = applyTransform(e, flipX, flipY, tileRot, tx + alignX, ty + alignY)
+        const ne = applyTransform(e, tileFlipX, tileFlipY, tileRot, tx + alignX, ty + alignY)
         outEntities.push(ne)
       }
     }
@@ -225,7 +246,13 @@ async function main() {
   const deduped: Entity[] = []
   const seen = new Set<string>()
   for (const e of outEntities) {
-    const k = `${e.name}@${e.position.x.toFixed(3)},${e.position.y.toFixed(3)}:dir=${typeof e.direction==='number'?e.direction:'n'}`
+    // Use one decimal place (positions are snapped to .0 or .5) for the key so
+    // logically-identical positions compare equal despite small formatting
+    // differences.
+    const px = (e.position.x ?? 0).toFixed(1)
+    const py = (e.position.y ?? 0).toFixed(1)
+    const dirVal = typeof e.direction === 'number' ? e.direction : 'n'
+    const k = `${e.name}@${px},${py}:dir=${dirVal}`
     if (seen.has(k)) continue
     seen.add(k)
     deduped.push(e)
