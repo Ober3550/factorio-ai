@@ -8,9 +8,15 @@
     "assembling-machine-3": 1.25
   },
   "recipes": {
-    "iron-plate": { "time": 3.5 },
-    "copper-plate": { "time": 3.5 },
+  "iron-plate": { "time": 3.2 },
+  "copper-plate": { "time": 3.2 },
     "steel-plate": { "time": 17.5 },
     "electronic-circuit": { "time": 0.5 }
+  }
+
+  ,"belt_speeds": {
+    "transport-belt": 15,
+    "fast-transport-belt": 30,
+    "express-transport-belt": 45
   }
 }

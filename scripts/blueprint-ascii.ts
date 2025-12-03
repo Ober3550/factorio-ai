@@ -164,34 +164,19 @@ async function main() {
         const ix = x - minX
         const iy = y - minY
         if (ix < 0 || ix >= width || iy < 0 || iy >= height) continue
-        const existingPrio = prioGrid[iy]?.[ix] ?? 0
-        if (f.prio > existingPrio) {
-          // higher priority always wins
+        // Show collisions explicitly: if a tile is already occupied by a different symbol,
+        // mark it with '+' so overlaps are obvious in the ASCII render.
+        const existing = grid[iy]![ix] ?? '.'
+        if (existing === '.' || existing === undefined) {
           grid[iy]![ix] = f.ch
           prioGrid[iy]![ix] = f.prio
-        } else if (f.prio === existingPrio) {
-          // same priority: if the cell is empty ('.') allow placement.
-          if (existingPrio === 0 && (grid[iy]![ix] === '.' || grid[iy]![ix] === undefined)) {
-            grid[iy]![ix] = f.ch
-            prioGrid[iy]![ix] = f.prio
-          } else {
-            // otherwise try to prefer uppercase multiblock entities.
-            const existing = grid[iy]![ix] ?? '.'
-            if (existing === f.ch) {
-              // same symbol already
-            } else {
-              const isUpper = (c: string) => c >= 'A' && c <= 'Z'
-              if (isUpper(existing) && !isUpper(f.ch)) {
-                // keep existing uppercase
-              } else if (isUpper(f.ch) && !isUpper(existing)) {
-                grid[iy]![ix] = f.ch
-              } else {
-                grid[iy]![ix] = '+'
-              }
-            }
-          }
+        } else if (existing === f.ch || existing === '+') {
+          // same symbol or already collision: keep it and update priority to max
+          prioGrid[iy]![ix] = Math.max(prioGrid[iy]![ix] ?? 0, f.prio)
         } else {
-          // lower priority: do nothing (keep existing higher-priority symbol)
+          // different symbol already present -> mark collision
+          grid[iy]![ix] = '+'
+          prioGrid[iy]![ix] = Math.max(prioGrid[iy]![ix] ?? 0, f.prio)
         }
       }
     }

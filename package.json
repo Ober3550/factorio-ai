@@ -5,13 +5,13 @@
   "description": "An exercise in defining the process of composing tools to design factorio blueprints",
   "main": "index.js",
   "scripts": {
-  "decode-bp": "node --no-warnings --loader ts-node/esm scripts/decode-blueprint.ts",
+    "decode-bp": "node --no-warnings --loader ts-node/esm scripts/decode-blueprint.ts",
     "bp-ascii": "node --no-warnings --loader ts-node/esm scripts/blueprint-ascii.ts",
     "decode-and-ascii": "node --no-warnings --loader ts-node/esm scripts/run-decode-and-ascii.ts",
     "test-ascii": "node --no-warnings --loader ts-node/esm scripts/test-ascii.ts",
-    "bp-meta": "node --no-warnings --loader ts-node/esm scripts/blueprint-metadata.ts"
-    ,
-    "bp-flow": "node --no-warnings --loader ts-node/esm scripts/blueprint-flow.ts"
+    "bp-meta": "node --no-warnings --loader ts-node/esm scripts/blueprint-metadata.ts",
+    "bp-flow": "node --no-warnings --loader ts-node/esm scripts/blueprint-flow.ts",
+    "compose-bp": "node --no-warnings --loader ts-node/esm scripts/compose-blueprint.ts"
   },
   "bin": {
     "bp-meta": "scripts/blueprint-metadata.ts"
