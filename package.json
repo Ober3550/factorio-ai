@@ -8,7 +8,13 @@
   "decode-bp": "node --no-warnings --loader ts-node/esm scripts/decode-blueprint.ts",
     "bp-ascii": "node --no-warnings --loader ts-node/esm scripts/blueprint-ascii.ts",
     "decode-and-ascii": "node --no-warnings --loader ts-node/esm scripts/run-decode-and-ascii.ts",
-    "test-ascii": "node --no-warnings --loader ts-node/esm scripts/test-ascii.ts"
+    "test-ascii": "node --no-warnings --loader ts-node/esm scripts/test-ascii.ts",
+    "bp-meta": "node --no-warnings --loader ts-node/esm scripts/blueprint-metadata.ts"
+    ,
+    "bp-flow": "node --no-warnings --loader ts-node/esm scripts/blueprint-flow.ts"
+  },
+  "bin": {
+    "bp-meta": "scripts/blueprint-metadata.ts"
   },
   "repository": {
     "type": "git",

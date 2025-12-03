@@ -1,0 +1,16 @@
+{
+  "entity_speeds": {
+    "stone-furnace": 1,
+    "steel-furnace": 2,
+    "electric-furnace": 2,
+    "assembling-machine-1": 0.5,
+    "assembling-machine-2": 0.75,
+    "assembling-machine-3": 1.25
+  },
+  "recipes": {
+    "iron-plate": { "time": 3.5 },
+    "copper-plate": { "time": 3.5 },
+    "steel-plate": { "time": 17.5 },
+    "electronic-circuit": { "time": 0.5 }
+  }
+}
