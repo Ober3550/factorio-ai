@@ -1,0 +1,32 @@
+{
+  "name": "factorio-ai",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "An exercise in defining the process of composing tools to design factorio blueprints",
+  "main": "index.js",
+  "scripts": {
+    "decode-bp": "node --loader ts-node/esm scripts/decode-blueprint.ts",
+    "bp-ascii": "node --loader ts-node/esm scripts/blueprint-ascii.ts",
+    "decode-and-ascii": "node --loader ts-node/esm scripts/run-decode-and-ascii.ts",
+    "test-ascii": "node --loader ts-node/esm scripts/test-ascii.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ober3550/factorio-ai.git"
+  },
+  "keywords": [
+    "factorio",
+    "ai"
+  ],
+  "author": "Ober3550",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ober3550/factorio-ai/issues"
+  },
+  "homepage": "https://github.com/Ober3550/factorio-ai#readme",
+  "devDependencies": {
+    "typescript": "^5.9.3",
+    "ts-node": "^10.9.1",
+    "@types/node": "^18.16.19"
+  }
+}

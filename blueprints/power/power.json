@@ -1,0 +1,200 @@
+{
+  "blueprint": {
+    "icons": [
+      {
+        "signal": {
+          "name": "steam-engine"
+        },
+        "index": 1
+      }
+    ],
+    "entities": [
+      {
+        "entity_number": 1,
+        "name": "steam-engine",
+        "position": {
+          "x": -2.5,
+          "y": -9.5
+        }
+      },
+      {
+        "entity_number": 2,
+        "name": "steam-engine",
+        "position": {
+          "x": 0.5,
+          "y": -9.5
+        }
+      },
+      {
+        "entity_number": 3,
+        "name": "pipe",
+        "position": {
+          "x": -2.5,
+          "y": -6.5
+        }
+      },
+      {
+        "entity_number": 4,
+        "name": "small-electric-pole",
+        "position": {
+          "x": -1.5,
+          "y": -6.5
+        }
+      },
+      {
+        "entity_number": 5,
+        "name": "pipe",
+        "position": {
+          "x": 0.5,
+          "y": -6.5
+        }
+      },
+      {
+        "entity_number": 6,
+        "name": "steam-engine",
+        "position": {
+          "x": -2.5,
+          "y": -3.5
+        }
+      },
+      {
+        "entity_number": 7,
+        "name": "steam-engine",
+        "position": {
+          "x": 0.5,
+          "y": -3.5
+        }
+      },
+      {
+        "entity_number": 8,
+        "name": "small-electric-pole",
+        "position": {
+          "x": -4.5,
+          "y": -1.5
+        }
+      },
+      {
+        "entity_number": 9,
+        "name": "offshore-pump",
+        "position": {
+          "x": -4.5,
+          "y": 0.5
+        },
+        "direction": 12
+      },
+      {
+        "entity_number": 10,
+        "name": "small-electric-pole",
+        "position": {
+          "x": -2.5,
+          "y": 1.5
+        }
+      },
+      {
+        "entity_number": 11,
+        "name": "boiler",
+        "position": {
+          "x": -2.5,
+          "y": 0
+        }
+      },
+      {
+        "entity_number": 12,
+        "name": "inserter",
+        "position": {
+          "x": -0.5,
+          "y": 1.5
+        },
+        "direction": 8
+      },
+      {
+        "entity_number": 13,
+        "name": "inserter",
+        "position": {
+          "x": -1.5,
+          "y": 1.5
+        },
+        "direction": 8
+      },
+      {
+        "entity_number": 14,
+        "name": "boiler",
+        "position": {
+          "x": 0.5,
+          "y": 0
+        }
+      },
+      {
+        "entity_number": 15,
+        "name": "transport-belt",
+        "position": {
+          "x": -3.5,
+          "y": 2.5
+        },
+        "direction": 12
+      },
+      {
+        "entity_number": 16,
+        "name": "transport-belt",
+        "position": {
+          "x": -2.5,
+          "y": 2.5
+        },
+        "direction": 12
+      },
+      {
+        "entity_number": 17,
+        "name": "transport-belt",
+        "position": {
+          "x": -1.5,
+          "y": 2.5
+        },
+        "direction": 12
+      },
+      {
+        "entity_number": 18,
+        "name": "transport-belt",
+        "position": {
+          "x": -0.5,
+          "y": 2.5
+        },
+        "direction": 12
+      },
+      {
+        "entity_number": 19,
+        "name": "transport-belt",
+        "position": {
+          "x": 0.5,
+          "y": 2.5
+        },
+        "direction": 12
+      },
+      {
+        "entity_number": 20,
+        "name": "transport-belt",
+        "position": {
+          "x": 1.5,
+          "y": 2.5
+        },
+        "direction": 12
+      }
+    ],
+    "wires": [
+      [
+        4,
+        5,
+        8,
+        5
+      ],
+      [
+        8,
+        5,
+        10,
+        5
+      ]
+    ],
+    "item": "blueprint",
+    "label": "Power",
+    "version": 562949958139904
+  }
+}
