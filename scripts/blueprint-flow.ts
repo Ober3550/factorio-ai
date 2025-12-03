@@ -158,8 +158,8 @@ async function main() {
       comps.set(root, info)
     }
 
-    // compute per-component capacity by counting parallel lanes (not summing tiles)
-    const compList = Array.from(comps.values()).map((c, idx) => {
+  // compute per-component capacity by counting parallel lanes (not summing tiles)
+  const compList = Array.from(comps.entries()).map(([root, c], idx) => {
       // decide orientation: use direction info if available, otherwise compare span
       let sumDx = 0, sumDy = 0, dirCount = 0
       for (const it of c.items) {
@@ -192,35 +192,75 @@ async function main() {
 
       const cx = c.xs.reduce((s, v) => s + v, 0) / c.xs.length
       const cy = c.ys.reduce((s, v) => s + v, 0) / c.ys.length
-      return { id: idx, size: c.keys.length, cap: compCap, cx, cy }
+      return { id: idx, root, size: c.keys.length, cap: compCap, cx, cy }
     })
     const maxComponentCapacity = compList.length ? Math.max(...compList.map(c => c.cap)) : 0
-
-    // heuristics: choose output component as component with centroid closest to centerX
+    // heuristics: determine module center
     const centerX = (isFinite(minX) && isFinite(maxX)) ? (minX + maxX) / 2 : 0
-    let outputComponent: any = undefined
-    if (compList.length) {
-    let best = compList[0]!
-      for (const c of compList) {
-        if (Math.abs(c.cx - centerX) < Math.abs(best.cx - centerX)) best = c
+
+    // Detect inserter adjacency: map furnaces and inserters to positions and mark belt components
+    const furnaceNames = new Set(['stone-furnace', 'steel-furnace', 'electric-furnace'])
+    const furnaceMap = new Map<string, any>()
+    for (const e of entities) {
+      if (furnaceNames.has(e.name)) {
+        const k = posKey(Math.round(e.position?.x ?? 0), Math.round(e.position?.y ?? 0))
+        furnaceMap.set(k, e)
       }
+    }
+
+    const inserters = entities.filter((e: any) => e.name === 'inserter')
+    const inputCompRoots = new Set<string>()
+    const outputCompRoots = new Set<string>()
+    for (const ins of inserters) {
+      if (typeof ins.direction !== 'number') continue
+      const step = Math.floor(ins.direction / 4) & 3
+      const v = dirStepToVec(step)
+      const ix = Math.round(ins.position?.x ?? 0)
+      const iy = Math.round(ins.position?.y ?? 0)
+      const pickupKey = posKey(ix - v.x, iy - v.y)
+      const dropKey = posKey(ix + v.x, iy + v.y)
+      const pickupIsBelt = beltMap.has(pickupKey)
+      const dropIsBelt = beltMap.has(dropKey)
+      const pickupIsFurnace = furnaceMap.has(pickupKey)
+      const dropIsFurnace = furnaceMap.has(dropKey)
+      if (pickupIsBelt && dropIsFurnace) {
+        // belt -> furnace (input)
+        const root = find(pickupKey)
+        inputCompRoots.add(root)
+      } else if (pickupIsFurnace && dropIsBelt) {
+        // furnace -> belt (output)
+        const root = find(dropKey)
+        outputCompRoots.add(root)
+      }
+    }
+
+    // Prefer inserter-detected components; fall back to centroid heuristics
+    let outputComponent: any = undefined
+    if (outputCompRoots.size > 0) {
+      const roots = Array.from(outputCompRoots)
+      const chosen = compList.find(c => c.root === roots[0])
+      if (chosen) outputComponent = chosen
+    } else if (compList.length) {
+      let best = compList[0]!
+      for (const c of compList) if (Math.abs(c.cx - centerX) < Math.abs(best.cx - centerX)) best = c
       outputComponent = best
     }
 
-    // heuristics: choose two input components as those closest to minX and maxX
-    let inputLeft: any = undefined, inputRight: any = undefined
-    if (compList.length) {
-    let bestL = compList[0]!
-    let bestR = compList[0]!
+    let inputCapacityPerSec = 0
+    if (inputCompRoots.size > 0) {
+      for (const r of inputCompRoots) {
+        const c = compList.find(cc => cc.root === r)
+        if (c) inputCapacityPerSec += c.cap
+      }
+    } else if (compList.length) {
+      // fallback: use leftmost and rightmost components
+      let bestL = compList[0]!, bestR = compList[0]!
       for (const c of compList) {
         if (Math.abs(c.cx - minX) < Math.abs(bestL.cx - minX)) bestL = c
         if (Math.abs(c.cx - maxX) < Math.abs(bestR.cx - maxX)) bestR = c
       }
-      inputLeft = bestL
-      inputRight = bestR
+      inputCapacityPerSec = bestL.cap + (bestR === bestL ? 0 : bestR.cap)
     }
-
-    const inputCapacityPerSec = (inputLeft ? inputLeft.cap : 0) + (inputRight ? (inputRight === inputLeft ? 0 : inputRight.cap) : 0)
     const effectiveOreInputPerSec = inputCapacityPerSec / 2
     const outputCapacityPerSec = outputComponent ? outputComponent.cap : maxComponentCapacity
 
@@ -236,7 +276,24 @@ async function main() {
     
     belt_components_count: compList.length,
     belt_components: compList.map(c => ({ cap: c.cap, cx: c.cx, cy: c.cy, size: c.size })),
-    input_components: [inputLeft ? { cap: inputLeft.cap, cx: inputLeft.cx } : null, inputRight ? { cap: inputRight.cap, cx: inputRight.cx } : null],
+    input_components: (function(){
+      const arr: Array<any> = []
+      if (typeof inputCompRoots !== 'undefined' && inputCompRoots.size>0) {
+        for (const r of Array.from(inputCompRoots)) {
+          const c = compList.find(cc => cc.root === r)
+          if (c) arr.push({ cap: c.cap, cx: c.cx })
+        }
+      } else if (compList.length) {
+        let bestL = compList[0]!, bestR = compList[0]!
+        for (const c of compList) {
+          if (Math.abs(c.cx - minX) < Math.abs(bestL.cx - minX)) bestL = c
+          if (Math.abs(c.cx - maxX) < Math.abs(bestR.cx - maxX)) bestR = c
+        }
+        arr.push({ cap: bestL.cap, cx: bestL.cx })
+        if (bestR !== bestL) arr.push({ cap: bestR.cap, cx: bestR.cx })
+      }
+      return arr
+    })(),
     output_component: outputComponent ? { cap: outputComponent.cap, cx: outputComponent.cx } : null,
     input_capacity_per_sec: inputCapacityPerSec,
     effective_ore_input_per_sec: effectiveOreInputPerSec,

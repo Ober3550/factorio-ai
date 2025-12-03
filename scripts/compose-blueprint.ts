@@ -231,7 +231,24 @@ async function main() {
     deduped.push(e)
   }
 
-  const out = { blueprint: { entities: deduped } }
+  // Preserve any metadata from the input blueprint (icons, label, wires, version, etc.)
+  // but replace the entities with our composed/deduplicated list. This keeps the
+  // composed JSON compatible with Factorio's expected blueprint schema so it can
+  // be imported directly in-game.
+  const outBlueprint = { ...(bp ?? {}), entities: deduped }
+  // Ensure minimal required fields exist
+  outBlueprint.item = outBlueprint.item ?? 'blueprint'
+  outBlueprint.version = outBlueprint.version ?? 5629499581399004
+
+  // Assign unique entity_number values required by Factorio when importing
+  // blueprints. Use a simple sequential numbering starting at 1.
+  if (Array.isArray(outBlueprint.entities)) {
+    for (let i = 0; i < outBlueprint.entities.length; i++) {
+      outBlueprint.entities[i].entity_number = i + 1
+    }
+  }
+
+  const out = { blueprint: outBlueprint }
   if (outFile) {
     await fs.writeFile(outFile, JSON.stringify(out, null, 2), 'utf8')
     console.log(`Wrote composed blueprint to ${outFile}`)

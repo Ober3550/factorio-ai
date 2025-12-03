@@ -11,7 +11,8 @@
     "test-ascii": "node --no-warnings --loader ts-node/esm scripts/test-ascii.ts",
     "bp-meta": "node --no-warnings --loader ts-node/esm scripts/blueprint-metadata.ts",
     "bp-flow": "node --no-warnings --loader ts-node/esm scripts/blueprint-flow.ts",
-    "compose-bp": "node --no-warnings --loader ts-node/esm scripts/compose-blueprint.ts"
+    "compose-bp": "node --no-warnings --loader ts-node/esm scripts/compose-blueprint.ts",
+    "encode-bp": "node --no-warnings --loader ts-node/esm scripts/encode-blueprint.ts"
   },
   "bin": {
     "bp-meta": "scripts/blueprint-metadata.ts"
