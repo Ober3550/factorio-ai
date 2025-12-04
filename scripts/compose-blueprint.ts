@@ -130,6 +130,8 @@ function applyTransform(e: Entity, flipX: boolean, flipY: boolean, rot: number, 
     out.direction = newStep * 4
   }
 
+  
+
   // remove any blueprint-specific tags like entity_number if present
   delete out.entity_number
   return out
@@ -230,7 +232,7 @@ async function main() {
   // compute this tile's footprint so we can align its xStart/yStart to the base footprint
   // Use the per-tile flip flags (tileFlipX/tileFlipY) so rotated+flipped
   // bottom tiles align correctly with the top row.
-  const tileFoot = footprintBounds(normEntities, tileRot, tileFlipX, tileFlipY)
+        const tileFoot = footprintBounds(normEntities, tileRot, tileFlipX, tileFlipY)
       const alignX = baseFoot.xStart - tileFoot.xStart
       const alignY = baseFoot.yStart - tileFoot.yStart
 
@@ -258,6 +260,25 @@ async function main() {
     deduped.push(e)
   }
 
+  // Ensure inserters face the expected drop target (usually a furnace).
+  // Some tile rotations/flips could leave inserters pointing away from the
+  // furnace and instead toward belts. We correct that by finding an adjacent
+  // furnace (Manhattan distance ~= 1) and setting the inserter's direction to
+  // point at that furnace. This guarantees the inserter will drop into the
+  // furnace and therefore pick from the belt on the other side.
+  for (const ins of deduped.filter((x) => x.name === 'inserter')) {
+    const ix = Number(ins.position.x ?? 0)
+    const iy = Number(ins.position.y ?? 0)
+    const furn = deduped.find((e) => (e.name.includes('furnace') || e.name.includes('assembling-machine'))
+      && Math.abs(Number(e.position.x) - ix) <= 1.1
+      && Math.abs(Number(e.position.y) - iy) <= 1.1)
+    if (!furn) continue
+    const dx = Math.round(Number(furn.position.x) - ix)
+    const dy = Math.round(Number(furn.position.y) - iy)
+    const step = vecToDirStep({ x: dx, y: dy })
+    ins.direction = step * 4
+  }
+
   // Preserve any metadata from the input blueprint (icons, label, wires, version, etc.)
   // but replace the entities with our composed/deduplicated list. This keeps the
   // composed JSON compatible with Factorio's expected blueprint schema so it can
@@ -273,6 +294,107 @@ async function main() {
     for (let i = 0; i < outBlueprint.entities.length; i++) {
       outBlueprint.entities[i].entity_number = i + 1
     }
+  }
+
+  // Remove any existing wire configuration from the input blueprint so we
+  // create a fresh wiring layout for the composed blueprint.
+  outBlueprint.wires = []
+
+  // Connect power poles in a square/grid pattern: for each pole, connect to
+  // the nearest pole to the right (same y, x > current.x, distance <= 7)
+  // and the nearest pole below (same x, y > current.y, distance <= 7).
+  // Use entity_number indices in the wire tuples: [a, 5, b, 5]. The `5` is
+  // used in existing exported blueprints and acts as the connection index.
+  const poles: Array<{ id: number; x: number; y: number }> = (outBlueprint.entities ?? [])
+    .filter((e: any) => e.name === 'small-electric-pole' || e.name === 'medium-electric-pole' || e.name === 'big-electric-pole')
+    .map((e: any) => ({ id: e.entity_number as number, x: Number(e.position.x), y: Number(e.position.y) }))
+
+  const wires: any[] = []
+  const seenPairs = new Set<string>()
+
+  // Helper to add pair once
+  function addPair(a: number, b: number) {
+    const k = a < b ? `${a}-${b}` : `${b}-${a}`
+    if (seenPairs.has(k)) return
+    seenPairs.add(k)
+    wires.push([a, 5, b, 5])
+  }
+
+  for (const p of poles) {
+    // find nearest to the right (same y)
+    const sameRow = poles.filter((q: { id: number; x: number; y: number }) => Math.abs(q.y - p.y) < 1e-6 && q.x > p.x && Math.abs(q.x - p.x) <= 7)
+    if (sameRow.length > 0) {
+      sameRow.sort((a: { id: number; x: number; y: number }, b: { id: number; x: number; y: number }) => (a.x - p.x) - (b.x - p.x))
+  addPair(p.id, sameRow[0]!.id)
+    }
+    // find nearest below (same x)
+    const sameCol = poles.filter((q: { id: number; x: number; y: number }) => Math.abs(q.x - p.x) < 1e-6 && q.y > p.y && Math.abs(q.y - p.y) <= 7)
+    if (sameCol.length > 0) {
+      sameCol.sort((a: { id: number; x: number; y: number }, b: { id: number; x: number; y: number }) => (a.y - p.y) - (b.y - p.y))
+  addPair(p.id, sameCol[0]!.id)
+    }
+  }
+
+  // Attach the generated wires to the blueprint
+  outBlueprint.wires = wires
+
+  // Auto-connect nearby power poles (small-electric-pole) to form a grid-like
+  // wiring pattern. Poles connect when aligned on the same X or Y and within
+  // a 7-tile radius. Connect nearest neighbors in each axis to form squares.
+  try {
+    const existingWires = Array.isArray(outBlueprint.wires) ? outBlueprint.wires.slice() : []
+    const poles = (outBlueprint.entities ?? []).filter((e: any) => e.name === 'small-electric-pole')
+      .map((p: any) => ({ x: Number((p.position.x ?? 0).toFixed(1)), y: Number((p.position.y ?? 0).toFixed(1)) }))
+
+    const wireSet = new Set(existingWires.map((w: any) => w.join(',')))
+    const newWires: Array<any> = []
+
+    // group by X and connect vertical neighbors
+    const byX = new Map<string, Array<{x:number,y:number}>>()
+    for (const p of poles) {
+      const key = p.x.toFixed(1)
+      let arr = byX.get(key)
+      if (!arr) { arr = []; byX.set(key, arr) }
+      arr.push(p)
+    }
+    for (const [kx, arr] of byX) {
+      arr.sort((a,b)=>a.y-b.y)
+      for (let i=0;i+1<arr.length;i++){
+        const a = arr[i]
+        const b = arr[i+1]
+        if (!a || !b) continue
+        if (Math.abs(b.y - a.y) <= 7) {
+          const key = `${a.x},${a.y},${b.x},${b.y}`
+          if (!wireSet.has(key)) { wireSet.add(key); newWires.push([a.x,a.y,b.x,b.y]) }
+        }
+      }
+    }
+
+    // group by Y and connect horizontal neighbors
+    const byY = new Map<string, Array<{x:number,y:number}>>()
+    for (const p of poles) {
+      const key = p.y.toFixed(1)
+      let arr = byY.get(key)
+      if (!arr) { arr = []; byY.set(key, arr) }
+      arr.push(p)
+    }
+    for (const [ky, arr] of byY) {
+      arr.sort((a,b)=>a.x-b.x)
+      for (let i=0;i+1<arr.length;i++){
+        const a = arr[i]
+        const b = arr[i+1]
+        if (!a || !b) continue
+        if (Math.abs(b.x - a.x) <= 7) {
+          const key = `${a.x},${a.y},${b.x},${b.y}`
+          if (!wireSet.has(key)) { wireSet.add(key); newWires.push([a.x,a.y,b.x,b.y]) }
+        }
+      }
+    }
+
+    outBlueprint.wires = existingWires.concat(newWires)
+  } catch (err) {
+    // non-fatal: wiring is a best-effort convenience
+    console.error('Failed to auto-generate wires:', err)
   }
 
   const out = { blueprint: outBlueprint }
