@@ -126,19 +126,17 @@
       {
         "name": "inserter",
         "position": {
-          "x": 2.5,
+          "x": 1.5,
           "y": 1.5
         },
-        "direction": 8,
         "entity_number": 13
       },
       {
         "name": "inserter",
         "position": {
-          "x": 1.5,
+          "x": 2.5,
           "y": 1.5
         },
-        "direction": 8,
         "entity_number": 14
       },
       {
@@ -152,19 +150,17 @@
       {
         "name": "inserter",
         "position": {
-          "x": 6.5,
+          "x": 5.5,
           "y": 1.5
         },
-        "direction": 8,
         "entity_number": 16
       },
       {
         "name": "inserter",
         "position": {
-          "x": 5.5,
+          "x": 6.5,
           "y": 1.5
         },
-        "direction": 8,
         "entity_number": 17
       },
       {
@@ -178,19 +174,17 @@
       {
         "name": "inserter",
         "position": {
-          "x": 9.5,
+          "x": 10.5,
           "y": 1.5
         },
-        "direction": 8,
         "entity_number": 19
       },
       {
         "name": "inserter",
         "position": {
-          "x": 10.5,
+          "x": 9.5,
           "y": 1.5
         },
-        "direction": 8,
         "entity_number": 20
       },
       {
@@ -204,34 +198,32 @@
       {
         "name": "inserter",
         "position": {
-          "x": 2.5,
+          "x": 1.5,
           "y": 4.5
         },
-        "direction": 8,
         "entity_number": 22
       },
       {
         "name": "inserter",
         "position": {
-          "x": 1.5,
+          "x": 2.5,
           "y": 4.5
         },
-        "direction": 8,
         "entity_number": 23
-      },
-      {
-        "name": "small-electric-pole",
-        "position": {
-          "x": 3.5,
-          "y": 4.5
-        },
-        "entity_number": 24
       },
       {
         "name": "stone-furnace",
         "position": {
           "x": 3,
           "y": 3
+        },
+        "entity_number": 24
+      },
+      {
+        "name": "small-electric-pole",
+        "position": {
+          "x": 3.5,
+          "y": 4.5
         },
         "entity_number": 25
       },
@@ -246,28 +238,18 @@
       {
         "name": "inserter",
         "position": {
-          "x": 6.5,
+          "x": 5.5,
           "y": 4.5
         },
-        "direction": 8,
         "entity_number": 27
       },
       {
         "name": "inserter",
         "position": {
-          "x": 5.5,
+          "x": 6.5,
           "y": 4.5
         },
-        "direction": 8,
         "entity_number": 28
-      },
-      {
-        "name": "small-electric-pole",
-        "position": {
-          "x": 8.5,
-          "y": 4.5
-        },
-        "entity_number": 29
       },
       {
         "name": "stone-furnace",
@@ -275,15 +257,22 @@
           "x": 7,
           "y": 3
         },
+        "entity_number": 29
+      },
+      {
+        "name": "small-electric-pole",
+        "position": {
+          "x": 8.5,
+          "y": 4.5
+        },
         "entity_number": 30
       },
       {
-        "name": "inserter",
+        "name": "stone-furnace",
         "position": {
-          "x": 9.5,
-          "y": 4.5
+          "x": 9,
+          "y": 3
         },
-        "direction": 8,
         "entity_number": 31
       },
       {
@@ -292,14 +281,13 @@
           "x": 10.5,
           "y": 4.5
         },
-        "direction": 8,
         "entity_number": 32
       },
       {
-        "name": "stone-furnace",
+        "name": "inserter",
         "position": {
-          "x": 9,
-          "y": 3
+          "x": 9.5,
+          "y": 4.5
         },
         "entity_number": 33
       },
@@ -530,19 +518,17 @@
       {
         "name": "inserter",
         "position": {
-          "x": 14.5,
+          "x": 13.5,
           "y": 1.5
         },
-        "direction": 8,
         "entity_number": 59
       },
       {
         "name": "inserter",
         "position": {
-          "x": 13.5,
+          "x": 14.5,
           "y": 1.5
         },
-        "direction": 8,
         "entity_number": 60
       },
       {
@@ -556,19 +542,17 @@
       {
         "name": "inserter",
         "position": {
-          "x": 18.5,
+          "x": 17.5,
           "y": 1.5
         },
-        "direction": 8,
         "entity_number": 62
       },
       {
         "name": "inserter",
         "position": {
-          "x": 17.5,
+          "x": 18.5,
           "y": 1.5
         },
-        "direction": 8,
         "entity_number": 63
       },
       {
@@ -582,19 +566,17 @@
       {
         "name": "inserter",
         "position": {
-          "x": 21.5,
+          "x": 22.5,
           "y": 1.5
         },
-        "direction": 8,
         "entity_number": 65
       },
       {
         "name": "inserter",
         "position": {
-          "x": 22.5,
+          "x": 21.5,
           "y": 1.5
         },
-        "direction": 8,
         "entity_number": 66
       },
       {
@@ -608,34 +590,32 @@
       {
         "name": "inserter",
         "position": {
-          "x": 14.5,
+          "x": 13.5,
           "y": 4.5
         },
-        "direction": 8,
         "entity_number": 68
       },
       {
         "name": "inserter",
         "position": {
-          "x": 13.5,
+          "x": 14.5,
           "y": 4.5
         },
-        "direction": 8,
         "entity_number": 69
-      },
-      {
-        "name": "small-electric-pole",
-        "position": {
-          "x": 15.5,
-          "y": 4.5
-        },
-        "entity_number": 70
       },
       {
         "name": "stone-furnace",
         "position": {
           "x": 15,
           "y": 3
+        },
+        "entity_number": 70
+      },
+      {
+        "name": "small-electric-pole",
+        "position": {
+          "x": 15.5,
+          "y": 4.5
         },
         "entity_number": 71
       },
@@ -650,28 +630,18 @@
       {
         "name": "inserter",
         "position": {
-          "x": 18.5,
+          "x": 17.5,
           "y": 4.5
         },
-        "direction": 8,
         "entity_number": 73
       },
       {
         "name": "inserter",
         "position": {
-          "x": 17.5,
+          "x": 18.5,
           "y": 4.5
         },
-        "direction": 8,
         "entity_number": 74
-      },
-      {
-        "name": "small-electric-pole",
-        "position": {
-          "x": 20.5,
-          "y": 4.5
-        },
-        "entity_number": 75
       },
       {
         "name": "stone-furnace",
@@ -679,15 +649,22 @@
           "x": 19,
           "y": 3
         },
+        "entity_number": 75
+      },
+      {
+        "name": "small-electric-pole",
+        "position": {
+          "x": 20.5,
+          "y": 4.5
+        },
         "entity_number": 76
       },
       {
-        "name": "inserter",
+        "name": "stone-furnace",
         "position": {
-          "x": 21.5,
-          "y": 4.5
+          "x": 21,
+          "y": 3
         },
-        "direction": 8,
         "entity_number": 77
       },
       {
@@ -696,14 +673,13 @@
           "x": 22.5,
           "y": 4.5
         },
-        "direction": 8,
         "entity_number": 78
       },
       {
-        "name": "stone-furnace",
+        "name": "inserter",
         "position": {
-          "x": 21,
-          "y": 3
+          "x": 21.5,
+          "y": 4.5
         },
         "entity_number": 79
       },
@@ -934,19 +910,17 @@
       {
         "name": "inserter",
         "position": {
-          "x": 26.5,
+          "x": 25.5,
           "y": 1.5
         },
-        "direction": 8,
         "entity_number": 105
       },
       {
         "name": "inserter",
         "position": {
-          "x": 25.5,
+          "x": 26.5,
           "y": 1.5
         },
-        "direction": 8,
         "entity_number": 106
       },
       {
@@ -960,19 +934,17 @@
       {
         "name": "inserter",
         "position": {
-          "x": 30.5,
+          "x": 29.5,
           "y": 1.5
         },
-        "direction": 8,
         "entity_number": 108
       },
       {
         "name": "inserter",
         "position": {
-          "x": 29.5,
+          "x": 30.5,
           "y": 1.5
         },
-        "direction": 8,
         "entity_number": 109
       },
       {
@@ -986,19 +958,17 @@
       {
         "name": "inserter",
         "position": {
-          "x": 33.5,
+          "x": 34.5,
           "y": 1.5
         },
-        "direction": 8,
         "entity_number": 111
       },
       {
         "name": "inserter",
         "position": {
-          "x": 34.5,
+          "x": 33.5,
           "y": 1.5
         },
-        "direction": 8,
         "entity_number": 112
       },
       {
@@ -1012,34 +982,32 @@
       {
         "name": "inserter",
         "position": {
-          "x": 26.5,
+          "x": 25.5,
           "y": 4.5
         },
-        "direction": 8,
         "entity_number": 114
       },
       {
         "name": "inserter",
         "position": {
-          "x": 25.5,
+          "x": 26.5,
           "y": 4.5
         },
-        "direction": 8,
         "entity_number": 115
-      },
-      {
-        "name": "small-electric-pole",
-        "position": {
-          "x": 27.5,
-          "y": 4.5
-        },
-        "entity_number": 116
       },
       {
         "name": "stone-furnace",
         "position": {
           "x": 27,
           "y": 3
+        },
+        "entity_number": 116
+      },
+      {
+        "name": "small-electric-pole",
+        "position": {
+          "x": 27.5,
+          "y": 4.5
         },
         "entity_number": 117
       },
@@ -1054,28 +1022,18 @@
       {
         "name": "inserter",
         "position": {
-          "x": 30.5,
+          "x": 29.5,
           "y": 4.5
         },
-        "direction": 8,
         "entity_number": 119
       },
       {
         "name": "inserter",
         "position": {
-          "x": 29.5,
+          "x": 30.5,
           "y": 4.5
         },
-        "direction": 8,
         "entity_number": 120
-      },
-      {
-        "name": "small-electric-pole",
-        "position": {
-          "x": 32.5,
-          "y": 4.5
-        },
-        "entity_number": 121
       },
       {
         "name": "stone-furnace",
@@ -1083,15 +1041,22 @@
           "x": 31,
           "y": 3
         },
+        "entity_number": 121
+      },
+      {
+        "name": "small-electric-pole",
+        "position": {
+          "x": 32.5,
+          "y": 4.5
+        },
         "entity_number": 122
       },
       {
-        "name": "inserter",
+        "name": "stone-furnace",
         "position": {
-          "x": 33.5,
-          "y": 4.5
+          "x": 33,
+          "y": 3
         },
-        "direction": 8,
         "entity_number": 123
       },
       {
@@ -1100,14 +1065,13 @@
           "x": 34.5,
           "y": 4.5
         },
-        "direction": 8,
         "entity_number": 124
       },
       {
-        "name": "stone-furnace",
+        "name": "inserter",
         "position": {
-          "x": 33,
-          "y": 3
+          "x": 33.5,
+          "y": 4.5
         },
         "entity_number": 125
       },
@@ -1338,19 +1302,17 @@
       {
         "name": "inserter",
         "position": {
-          "x": 38.5,
+          "x": 37.5,
           "y": 1.5
         },
-        "direction": 8,
         "entity_number": 151
       },
       {
         "name": "inserter",
         "position": {
-          "x": 37.5,
+          "x": 38.5,
           "y": 1.5
         },
-        "direction": 8,
         "entity_number": 152
       },
       {
@@ -1364,19 +1326,17 @@
       {
         "name": "inserter",
         "position": {
-          "x": 42.5,
+          "x": 41.5,
           "y": 1.5
         },
-        "direction": 8,
         "entity_number": 154
       },
       {
         "name": "inserter",
         "position": {
-          "x": 41.5,
+          "x": 42.5,
           "y": 1.5
         },
-        "direction": 8,
         "entity_number": 155
       },
       {
@@ -1390,19 +1350,17 @@
       {
         "name": "inserter",
         "position": {
-          "x": 45.5,
+          "x": 46.5,
           "y": 1.5
         },
-        "direction": 8,
         "entity_number": 157
       },
       {
         "name": "inserter",
         "position": {
-          "x": 46.5,
+          "x": 45.5,
           "y": 1.5
         },
-        "direction": 8,
         "entity_number": 158
       },
       {
@@ -1416,34 +1374,32 @@
       {
         "name": "inserter",
         "position": {
-          "x": 38.5,
+          "x": 37.5,
           "y": 4.5
         },
-        "direction": 8,
         "entity_number": 160
       },
       {
         "name": "inserter",
         "position": {
-          "x": 37.5,
+          "x": 38.5,
           "y": 4.5
         },
-        "direction": 8,
         "entity_number": 161
-      },
-      {
-        "name": "small-electric-pole",
-        "position": {
-          "x": 39.5,
-          "y": 4.5
-        },
-        "entity_number": 162
       },
       {
         "name": "stone-furnace",
         "position": {
           "x": 39,
           "y": 3
+        },
+        "entity_number": 162
+      },
+      {
+        "name": "small-electric-pole",
+        "position": {
+          "x": 39.5,
+          "y": 4.5
         },
         "entity_number": 163
       },
@@ -1458,28 +1414,18 @@
       {
         "name": "inserter",
         "position": {
-          "x": 42.5,
+          "x": 41.5,
           "y": 4.5
         },
-        "direction": 8,
         "entity_number": 165
       },
       {
         "name": "inserter",
         "position": {
-          "x": 41.5,
+          "x": 42.5,
           "y": 4.5
         },
-        "direction": 8,
         "entity_number": 166
-      },
-      {
-        "name": "small-electric-pole",
-        "position": {
-          "x": 44.5,
-          "y": 4.5
-        },
-        "entity_number": 167
       },
       {
         "name": "stone-furnace",
@@ -1487,15 +1433,22 @@
           "x": 43,
           "y": 3
         },
+        "entity_number": 167
+      },
+      {
+        "name": "small-electric-pole",
+        "position": {
+          "x": 44.5,
+          "y": 4.5
+        },
         "entity_number": 168
       },
       {
-        "name": "inserter",
+        "name": "stone-furnace",
         "position": {
-          "x": 45.5,
-          "y": 4.5
+          "x": 45,
+          "y": 3
         },
-        "direction": 8,
         "entity_number": 169
       },
       {
@@ -1504,14 +1457,13 @@
           "x": 46.5,
           "y": 4.5
         },
-        "direction": 8,
         "entity_number": 170
       },
       {
-        "name": "stone-furnace",
+        "name": "inserter",
         "position": {
-          "x": 45,
-          "y": 3
+          "x": 45.5,
+          "y": 4.5
         },
         "entity_number": 171
       },
@@ -1635,7 +1587,7 @@
         "name": "transport-belt",
         "position": {
           "x": 0.5,
-          "y": 10.5
+          "y": 6.5
         },
         "direction": 12,
         "entity_number": 185
@@ -1644,7 +1596,7 @@
         "name": "transport-belt",
         "position": {
           "x": 2.5,
-          "y": 10.5
+          "y": 6.5
         },
         "direction": 12,
         "entity_number": 186
@@ -1653,7 +1605,7 @@
         "name": "transport-belt",
         "position": {
           "x": 1.5,
-          "y": 10.5
+          "y": 6.5
         },
         "direction": 12,
         "entity_number": 187
@@ -1662,7 +1614,7 @@
         "name": "transport-belt",
         "position": {
           "x": 4.5,
-          "y": 10.5
+          "y": 6.5
         },
         "direction": 12,
         "entity_number": 188
@@ -1671,7 +1623,7 @@
         "name": "transport-belt",
         "position": {
           "x": 3.5,
-          "y": 10.5
+          "y": 6.5
         },
         "direction": 12,
         "entity_number": 189
@@ -1680,7 +1632,7 @@
         "name": "transport-belt",
         "position": {
           "x": 6.5,
-          "y": 10.5
+          "y": 6.5
         },
         "direction": 12,
         "entity_number": 190
@@ -1689,7 +1641,7 @@
         "name": "transport-belt",
         "position": {
           "x": 5.5,
-          "y": 10.5
+          "y": 6.5
         },
         "direction": 12,
         "entity_number": 191
@@ -1698,7 +1650,7 @@
         "name": "transport-belt",
         "position": {
           "x": 8.5,
-          "y": 10.5
+          "y": 6.5
         },
         "direction": 12,
         "entity_number": 192
@@ -1707,7 +1659,7 @@
         "name": "transport-belt",
         "position": {
           "x": 7.5,
-          "y": 10.5
+          "y": 6.5
         },
         "direction": 12,
         "entity_number": 193
@@ -1716,7 +1668,7 @@
         "name": "transport-belt",
         "position": {
           "x": 10.5,
-          "y": 10.5
+          "y": 6.5
         },
         "direction": 12,
         "entity_number": 194
@@ -1725,7 +1677,7 @@
         "name": "transport-belt",
         "position": {
           "x": 9.5,
-          "y": 10.5
+          "y": 6.5
         },
         "direction": 12,
         "entity_number": 195
@@ -1734,7 +1686,7 @@
         "name": "transport-belt",
         "position": {
           "x": 11.5,
-          "y": 10.5
+          "y": 6.5
         },
         "direction": 12,
         "entity_number": 196
@@ -1742,112 +1694,104 @@
       {
         "name": "inserter",
         "position": {
-          "x": 2.5,
-          "y": 9.5
+          "x": 1.5,
+          "y": 7.5
         },
-        "direction": 0,
         "entity_number": 197
       },
       {
         "name": "inserter",
         "position": {
-          "x": 1.5,
-          "y": 9.5
+          "x": 2.5,
+          "y": 7.5
         },
-        "direction": 0,
         "entity_number": 198
       },
       {
         "name": "small-electric-pole",
         "position": {
           "x": 3.5,
-          "y": 9.5
+          "y": 7.5
         },
         "entity_number": 199
       },
       {
         "name": "inserter",
         "position": {
-          "x": 6.5,
-          "y": 9.5
+          "x": 5.5,
+          "y": 7.5
         },
-        "direction": 0,
         "entity_number": 200
       },
       {
         "name": "inserter",
         "position": {
-          "x": 5.5,
-          "y": 9.5
+          "x": 6.5,
+          "y": 7.5
         },
-        "direction": 0,
         "entity_number": 201
       },
       {
         "name": "small-electric-pole",
         "position": {
           "x": 8.5,
-          "y": 9.5
+          "y": 7.5
         },
         "entity_number": 202
       },
       {
         "name": "inserter",
         "position": {
-          "x": 9.5,
-          "y": 9.5
+          "x": 10.5,
+          "y": 7.5
         },
-        "direction": 0,
         "entity_number": 203
       },
       {
         "name": "inserter",
         "position": {
-          "x": 10.5,
-          "y": 9.5
+          "x": 9.5,
+          "y": 7.5
         },
-        "direction": 0,
         "entity_number": 204
       },
       {
         "name": "stone-furnace",
         "position": {
           "x": 1,
-          "y": 8
+          "y": 9
         },
         "entity_number": 205
       },
       {
         "name": "inserter",
         "position": {
-          "x": 2.5,
-          "y": 6.5
+          "x": 1.5,
+          "y": 10.5
         },
-        "direction": 0,
         "entity_number": 206
       },
       {
         "name": "inserter",
         "position": {
-          "x": 1.5,
-          "y": 6.5
+          "x": 2.5,
+          "y": 10.5
         },
-        "direction": 0,
         "entity_number": 207
-      },
-      {
-        "name": "small-electric-pole",
-        "position": {
-          "x": 3.5,
-          "y": 6.5
-        },
-        "entity_number": 208
       },
       {
         "name": "stone-furnace",
         "position": {
           "x": 3,
-          "y": 8
+          "y": 9
+        },
+        "entity_number": 208
+      },
+      {
+        "name": "small-electric-pole",
+        "position": {
+          "x": 3.5,
+          "y": 10.5
         },
         "entity_number": 209
       },
@@ -1855,67 +1799,63 @@
         "name": "stone-furnace",
         "position": {
           "x": 5,
-          "y": 8
+          "y": 9
         },
         "entity_number": 210
       },
       {
         "name": "inserter",
         "position": {
-          "x": 6.5,
-          "y": 6.5
+          "x": 5.5,
+          "y": 10.5
         },
-        "direction": 0,
         "entity_number": 211
       },
       {
         "name": "inserter",
         "position": {
-          "x": 5.5,
-          "y": 6.5
+          "x": 6.5,
+          "y": 10.5
         },
-        "direction": 0,
         "entity_number": 212
-      },
-      {
-        "name": "small-electric-pole",
-        "position": {
-          "x": 8.5,
-          "y": 6.5
-        },
-        "entity_number": 213
       },
       {
         "name": "stone-furnace",
         "position": {
           "x": 7,
-          "y": 8
+          "y": 9
+        },
+        "entity_number": 213
+      },
+      {
+        "name": "small-electric-pole",
+        "position": {
+          "x": 8.5,
+          "y": 10.5
         },
         "entity_number": 214
       },
       {
-        "name": "inserter",
+        "name": "stone-furnace",
         "position": {
-          "x": 9.5,
-          "y": 6.5
+          "x": 9,
+          "y": 9
         },
-        "direction": 0,
         "entity_number": 215
       },
       {
         "name": "inserter",
         "position": {
           "x": 10.5,
-          "y": 6.5
+          "y": 10.5
         },
-        "direction": 0,
         "entity_number": 216
       },
       {
-        "name": "stone-furnace",
+        "name": "inserter",
         "position": {
-          "x": 9,
-          "y": 8
+          "x": 9.5,
+          "y": 10.5
         },
         "entity_number": 217
       },
@@ -1923,15 +1863,15 @@
         "name": "stone-furnace",
         "position": {
           "x": 11,
-          "y": 8
+          "y": 9
         },
         "entity_number": 218
       },
       {
         "name": "transport-belt",
         "position": {
-          "x": 12.5,
-          "y": 10.5
+          "x": 0.5,
+          "y": 11.5
         },
         "direction": 12,
         "entity_number": 219
@@ -1939,8 +1879,8 @@
       {
         "name": "transport-belt",
         "position": {
-          "x": 14.5,
-          "y": 10.5
+          "x": 1.5,
+          "y": 11.5
         },
         "direction": 12,
         "entity_number": 220
@@ -1948,8 +1888,8 @@
       {
         "name": "transport-belt",
         "position": {
-          "x": 13.5,
-          "y": 10.5
+          "x": 2.5,
+          "y": 11.5
         },
         "direction": 12,
         "entity_number": 221
@@ -1957,8 +1897,8 @@
       {
         "name": "transport-belt",
         "position": {
-          "x": 16.5,
-          "y": 10.5
+          "x": 3.5,
+          "y": 11.5
         },
         "direction": 12,
         "entity_number": 222
@@ -1966,8 +1906,8 @@
       {
         "name": "transport-belt",
         "position": {
-          "x": 15.5,
-          "y": 10.5
+          "x": 4.5,
+          "y": 11.5
         },
         "direction": 12,
         "entity_number": 223
@@ -1975,8 +1915,8 @@
       {
         "name": "transport-belt",
         "position": {
-          "x": 18.5,
-          "y": 10.5
+          "x": 5.5,
+          "y": 11.5
         },
         "direction": 12,
         "entity_number": 224
@@ -1984,8 +1924,8 @@
       {
         "name": "transport-belt",
         "position": {
-          "x": 17.5,
-          "y": 10.5
+          "x": 6.5,
+          "y": 11.5
         },
         "direction": 12,
         "entity_number": 225
@@ -1993,8 +1933,8 @@
       {
         "name": "transport-belt",
         "position": {
-          "x": 20.5,
-          "y": 10.5
+          "x": 7.5,
+          "y": 11.5
         },
         "direction": 12,
         "entity_number": 226
@@ -2002,8 +1942,8 @@
       {
         "name": "transport-belt",
         "position": {
-          "x": 19.5,
-          "y": 10.5
+          "x": 8.5,
+          "y": 11.5
         },
         "direction": 12,
         "entity_number": 227
@@ -2011,8 +1951,8 @@
       {
         "name": "transport-belt",
         "position": {
-          "x": 22.5,
-          "y": 10.5
+          "x": 9.5,
+          "y": 11.5
         },
         "direction": 12,
         "entity_number": 228
@@ -2020,8 +1960,8 @@
       {
         "name": "transport-belt",
         "position": {
-          "x": 21.5,
-          "y": 10.5
+          "x": 10.5,
+          "y": 11.5
         },
         "direction": 12,
         "entity_number": 229
@@ -2029,501 +1969,499 @@
       {
         "name": "transport-belt",
         "position": {
-          "x": 23.5,
-          "y": 10.5
+          "x": 11.5,
+          "y": 11.5
         },
         "direction": 12,
         "entity_number": 230
       },
       {
-        "name": "inserter",
+        "name": "transport-belt",
         "position": {
-          "x": 14.5,
-          "y": 9.5
+          "x": 12.5,
+          "y": 6.5
         },
-        "direction": 0,
+        "direction": 12,
         "entity_number": 231
       },
       {
-        "name": "inserter",
-        "position": {
-          "x": 13.5,
-          "y": 9.5
-        },
-        "direction": 0,
-        "entity_number": 232
-      },
-      {
-        "name": "small-electric-pole",
-        "position": {
-          "x": 15.5,
-          "y": 9.5
-        },
-        "entity_number": 233
-      },
-      {
-        "name": "inserter",
-        "position": {
-          "x": 18.5,
-          "y": 9.5
-        },
-        "direction": 0,
-        "entity_number": 234
-      },
-      {
-        "name": "inserter",
-        "position": {
-          "x": 17.5,
-          "y": 9.5
-        },
-        "direction": 0,
-        "entity_number": 235
-      },
-      {
-        "name": "small-electric-pole",
-        "position": {
-          "x": 20.5,
-          "y": 9.5
-        },
-        "entity_number": 236
-      },
-      {
-        "name": "inserter",
-        "position": {
-          "x": 21.5,
-          "y": 9.5
-        },
-        "direction": 0,
-        "entity_number": 237
-      },
-      {
-        "name": "inserter",
-        "position": {
-          "x": 22.5,
-          "y": 9.5
-        },
-        "direction": 0,
-        "entity_number": 238
-      },
-      {
-        "name": "stone-furnace",
-        "position": {
-          "x": 13,
-          "y": 8
-        },
-        "entity_number": 239
-      },
-      {
-        "name": "inserter",
+        "name": "transport-belt",
         "position": {
           "x": 14.5,
           "y": 6.5
         },
-        "direction": 0,
+        "direction": 12,
+        "entity_number": 232
+      },
+      {
+        "name": "transport-belt",
+        "position": {
+          "x": 13.5,
+          "y": 6.5
+        },
+        "direction": 12,
+        "entity_number": 233
+      },
+      {
+        "name": "transport-belt",
+        "position": {
+          "x": 16.5,
+          "y": 6.5
+        },
+        "direction": 12,
+        "entity_number": 234
+      },
+      {
+        "name": "transport-belt",
+        "position": {
+          "x": 15.5,
+          "y": 6.5
+        },
+        "direction": 12,
+        "entity_number": 235
+      },
+      {
+        "name": "transport-belt",
+        "position": {
+          "x": 18.5,
+          "y": 6.5
+        },
+        "direction": 12,
+        "entity_number": 236
+      },
+      {
+        "name": "transport-belt",
+        "position": {
+          "x": 17.5,
+          "y": 6.5
+        },
+        "direction": 12,
+        "entity_number": 237
+      },
+      {
+        "name": "transport-belt",
+        "position": {
+          "x": 20.5,
+          "y": 6.5
+        },
+        "direction": 12,
+        "entity_number": 238
+      },
+      {
+        "name": "transport-belt",
+        "position": {
+          "x": 19.5,
+          "y": 6.5
+        },
+        "direction": 12,
+        "entity_number": 239
+      },
+      {
+        "name": "transport-belt",
+        "position": {
+          "x": 22.5,
+          "y": 6.5
+        },
+        "direction": 12,
         "entity_number": 240
+      },
+      {
+        "name": "transport-belt",
+        "position": {
+          "x": 21.5,
+          "y": 6.5
+        },
+        "direction": 12,
+        "entity_number": 241
+      },
+      {
+        "name": "transport-belt",
+        "position": {
+          "x": 23.5,
+          "y": 6.5
+        },
+        "direction": 12,
+        "entity_number": 242
       },
       {
         "name": "inserter",
         "position": {
           "x": 13.5,
-          "y": 6.5
-        },
-        "direction": 0,
-        "entity_number": 241
-      },
-      {
-        "name": "small-electric-pole",
-        "position": {
-          "x": 15.5,
-          "y": 6.5
-        },
-        "entity_number": 242
-      },
-      {
-        "name": "stone-furnace",
-        "position": {
-          "x": 15,
-          "y": 8
+          "y": 7.5
         },
         "entity_number": 243
       },
       {
-        "name": "stone-furnace",
+        "name": "inserter",
         "position": {
-          "x": 17,
-          "y": 8
+          "x": 14.5,
+          "y": 7.5
         },
         "entity_number": 244
       },
       {
-        "name": "inserter",
+        "name": "small-electric-pole",
         "position": {
-          "x": 18.5,
-          "y": 6.5
+          "x": 15.5,
+          "y": 7.5
         },
-        "direction": 0,
         "entity_number": 245
       },
       {
         "name": "inserter",
         "position": {
           "x": 17.5,
-          "y": 6.5
+          "y": 7.5
         },
-        "direction": 0,
         "entity_number": 246
+      },
+      {
+        "name": "inserter",
+        "position": {
+          "x": 18.5,
+          "y": 7.5
+        },
+        "entity_number": 247
       },
       {
         "name": "small-electric-pole",
         "position": {
           "x": 20.5,
-          "y": 6.5
-        },
-        "entity_number": 247
-      },
-      {
-        "name": "stone-furnace",
-        "position": {
-          "x": 19,
-          "y": 8
+          "y": 7.5
         },
         "entity_number": 248
       },
       {
         "name": "inserter",
         "position": {
-          "x": 21.5,
-          "y": 6.5
+          "x": 22.5,
+          "y": 7.5
         },
-        "direction": 0,
         "entity_number": 249
       },
       {
         "name": "inserter",
         "position": {
-          "x": 22.5,
-          "y": 6.5
+          "x": 21.5,
+          "y": 7.5
         },
-        "direction": 0,
         "entity_number": 250
       },
       {
         "name": "stone-furnace",
         "position": {
-          "x": 21,
-          "y": 8
+          "x": 13,
+          "y": 9
         },
         "entity_number": 251
+      },
+      {
+        "name": "inserter",
+        "position": {
+          "x": 13.5,
+          "y": 10.5
+        },
+        "entity_number": 252
+      },
+      {
+        "name": "inserter",
+        "position": {
+          "x": 14.5,
+          "y": 10.5
+        },
+        "entity_number": 253
+      },
+      {
+        "name": "stone-furnace",
+        "position": {
+          "x": 15,
+          "y": 9
+        },
+        "entity_number": 254
+      },
+      {
+        "name": "small-electric-pole",
+        "position": {
+          "x": 15.5,
+          "y": 10.5
+        },
+        "entity_number": 255
+      },
+      {
+        "name": "stone-furnace",
+        "position": {
+          "x": 17,
+          "y": 9
+        },
+        "entity_number": 256
+      },
+      {
+        "name": "inserter",
+        "position": {
+          "x": 17.5,
+          "y": 10.5
+        },
+        "entity_number": 257
+      },
+      {
+        "name": "inserter",
+        "position": {
+          "x": 18.5,
+          "y": 10.5
+        },
+        "entity_number": 258
+      },
+      {
+        "name": "stone-furnace",
+        "position": {
+          "x": 19,
+          "y": 9
+        },
+        "entity_number": 259
+      },
+      {
+        "name": "small-electric-pole",
+        "position": {
+          "x": 20.5,
+          "y": 10.5
+        },
+        "entity_number": 260
+      },
+      {
+        "name": "stone-furnace",
+        "position": {
+          "x": 21,
+          "y": 9
+        },
+        "entity_number": 261
+      },
+      {
+        "name": "inserter",
+        "position": {
+          "x": 22.5,
+          "y": 10.5
+        },
+        "entity_number": 262
+      },
+      {
+        "name": "inserter",
+        "position": {
+          "x": 21.5,
+          "y": 10.5
+        },
+        "entity_number": 263
       },
       {
         "name": "stone-furnace",
         "position": {
           "x": 23,
-          "y": 8
+          "y": 9
         },
-        "entity_number": 252
+        "entity_number": 264
+      },
+      {
+        "name": "transport-belt",
+        "position": {
+          "x": 12.5,
+          "y": 11.5
+        },
+        "direction": 12,
+        "entity_number": 265
+      },
+      {
+        "name": "transport-belt",
+        "position": {
+          "x": 13.5,
+          "y": 11.5
+        },
+        "direction": 12,
+        "entity_number": 266
+      },
+      {
+        "name": "transport-belt",
+        "position": {
+          "x": 14.5,
+          "y": 11.5
+        },
+        "direction": 12,
+        "entity_number": 267
+      },
+      {
+        "name": "transport-belt",
+        "position": {
+          "x": 15.5,
+          "y": 11.5
+        },
+        "direction": 12,
+        "entity_number": 268
+      },
+      {
+        "name": "transport-belt",
+        "position": {
+          "x": 16.5,
+          "y": 11.5
+        },
+        "direction": 12,
+        "entity_number": 269
+      },
+      {
+        "name": "transport-belt",
+        "position": {
+          "x": 17.5,
+          "y": 11.5
+        },
+        "direction": 12,
+        "entity_number": 270
+      },
+      {
+        "name": "transport-belt",
+        "position": {
+          "x": 18.5,
+          "y": 11.5
+        },
+        "direction": 12,
+        "entity_number": 271
+      },
+      {
+        "name": "transport-belt",
+        "position": {
+          "x": 19.5,
+          "y": 11.5
+        },
+        "direction": 12,
+        "entity_number": 272
+      },
+      {
+        "name": "transport-belt",
+        "position": {
+          "x": 20.5,
+          "y": 11.5
+        },
+        "direction": 12,
+        "entity_number": 273
+      },
+      {
+        "name": "transport-belt",
+        "position": {
+          "x": 21.5,
+          "y": 11.5
+        },
+        "direction": 12,
+        "entity_number": 274
+      },
+      {
+        "name": "transport-belt",
+        "position": {
+          "x": 22.5,
+          "y": 11.5
+        },
+        "direction": 12,
+        "entity_number": 275
+      },
+      {
+        "name": "transport-belt",
+        "position": {
+          "x": 23.5,
+          "y": 11.5
+        },
+        "direction": 12,
+        "entity_number": 276
       },
       {
         "name": "transport-belt",
         "position": {
           "x": 24.5,
-          "y": 10.5
+          "y": 6.5
         },
         "direction": 12,
-        "entity_number": 253
+        "entity_number": 277
       },
       {
         "name": "transport-belt",
         "position": {
           "x": 26.5,
-          "y": 10.5
+          "y": 6.5
         },
         "direction": 12,
-        "entity_number": 254
+        "entity_number": 278
       },
       {
         "name": "transport-belt",
         "position": {
           "x": 25.5,
-          "y": 10.5
+          "y": 6.5
         },
         "direction": 12,
-        "entity_number": 255
+        "entity_number": 279
       },
       {
         "name": "transport-belt",
         "position": {
           "x": 28.5,
-          "y": 10.5
+          "y": 6.5
         },
         "direction": 12,
-        "entity_number": 256
+        "entity_number": 280
       },
       {
         "name": "transport-belt",
         "position": {
           "x": 27.5,
-          "y": 10.5
+          "y": 6.5
         },
         "direction": 12,
-        "entity_number": 257
+        "entity_number": 281
       },
       {
         "name": "transport-belt",
         "position": {
           "x": 30.5,
-          "y": 10.5
+          "y": 6.5
         },
         "direction": 12,
-        "entity_number": 258
+        "entity_number": 282
       },
       {
         "name": "transport-belt",
         "position": {
           "x": 29.5,
-          "y": 10.5
+          "y": 6.5
         },
         "direction": 12,
-        "entity_number": 259
+        "entity_number": 283
       },
       {
         "name": "transport-belt",
         "position": {
           "x": 32.5,
-          "y": 10.5
+          "y": 6.5
         },
         "direction": 12,
-        "entity_number": 260
+        "entity_number": 284
       },
       {
         "name": "transport-belt",
         "position": {
           "x": 31.5,
-          "y": 10.5
+          "y": 6.5
         },
         "direction": 12,
-        "entity_number": 261
-      },
-      {
-        "name": "transport-belt",
-        "position": {
-          "x": 34.5,
-          "y": 10.5
-        },
-        "direction": 12,
-        "entity_number": 262
-      },
-      {
-        "name": "transport-belt",
-        "position": {
-          "x": 33.5,
-          "y": 10.5
-        },
-        "direction": 12,
-        "entity_number": 263
-      },
-      {
-        "name": "transport-belt",
-        "position": {
-          "x": 35.5,
-          "y": 10.5
-        },
-        "direction": 12,
-        "entity_number": 264
-      },
-      {
-        "name": "inserter",
-        "position": {
-          "x": 26.5,
-          "y": 9.5
-        },
-        "direction": 0,
-        "entity_number": 265
-      },
-      {
-        "name": "inserter",
-        "position": {
-          "x": 25.5,
-          "y": 9.5
-        },
-        "direction": 0,
-        "entity_number": 266
-      },
-      {
-        "name": "small-electric-pole",
-        "position": {
-          "x": 27.5,
-          "y": 9.5
-        },
-        "entity_number": 267
-      },
-      {
-        "name": "inserter",
-        "position": {
-          "x": 30.5,
-          "y": 9.5
-        },
-        "direction": 0,
-        "entity_number": 268
-      },
-      {
-        "name": "inserter",
-        "position": {
-          "x": 29.5,
-          "y": 9.5
-        },
-        "direction": 0,
-        "entity_number": 269
-      },
-      {
-        "name": "small-electric-pole",
-        "position": {
-          "x": 32.5,
-          "y": 9.5
-        },
-        "entity_number": 270
-      },
-      {
-        "name": "inserter",
-        "position": {
-          "x": 33.5,
-          "y": 9.5
-        },
-        "direction": 0,
-        "entity_number": 271
-      },
-      {
-        "name": "inserter",
-        "position": {
-          "x": 34.5,
-          "y": 9.5
-        },
-        "direction": 0,
-        "entity_number": 272
-      },
-      {
-        "name": "stone-furnace",
-        "position": {
-          "x": 25,
-          "y": 8
-        },
-        "entity_number": 273
-      },
-      {
-        "name": "inserter",
-        "position": {
-          "x": 26.5,
-          "y": 6.5
-        },
-        "direction": 0,
-        "entity_number": 274
-      },
-      {
-        "name": "inserter",
-        "position": {
-          "x": 25.5,
-          "y": 6.5
-        },
-        "direction": 0,
-        "entity_number": 275
-      },
-      {
-        "name": "small-electric-pole",
-        "position": {
-          "x": 27.5,
-          "y": 6.5
-        },
-        "entity_number": 276
-      },
-      {
-        "name": "stone-furnace",
-        "position": {
-          "x": 27,
-          "y": 8
-        },
-        "entity_number": 277
-      },
-      {
-        "name": "stone-furnace",
-        "position": {
-          "x": 29,
-          "y": 8
-        },
-        "entity_number": 278
-      },
-      {
-        "name": "inserter",
-        "position": {
-          "x": 30.5,
-          "y": 6.5
-        },
-        "direction": 0,
-        "entity_number": 279
-      },
-      {
-        "name": "inserter",
-        "position": {
-          "x": 29.5,
-          "y": 6.5
-        },
-        "direction": 0,
-        "entity_number": 280
-      },
-      {
-        "name": "small-electric-pole",
-        "position": {
-          "x": 32.5,
-          "y": 6.5
-        },
-        "entity_number": 281
-      },
-      {
-        "name": "stone-furnace",
-        "position": {
-          "x": 31,
-          "y": 8
-        },
-        "entity_number": 282
-      },
-      {
-        "name": "inserter",
-        "position": {
-          "x": 33.5,
-          "y": 6.5
-        },
-        "direction": 0,
-        "entity_number": 283
-      },
-      {
-        "name": "inserter",
-        "position": {
-          "x": 34.5,
-          "y": 6.5
-        },
-        "direction": 0,
-        "entity_number": 284
-      },
-      {
-        "name": "stone-furnace",
-        "position": {
-          "x": 33,
-          "y": 8
-        },
         "entity_number": 285
       },
       {
-        "name": "stone-furnace",
+        "name": "transport-belt",
         "position": {
-          "x": 35,
-          "y": 8
+          "x": 34.5,
+          "y": 6.5
         },
+        "direction": 12,
         "entity_number": 286
       },
       {
         "name": "transport-belt",
         "position": {
-          "x": 36.5,
-          "y": 10.5
+          "x": 33.5,
+          "y": 6.5
         },
         "direction": 12,
         "entity_number": 287
@@ -2531,289 +2469,687 @@
       {
         "name": "transport-belt",
         "position": {
-          "x": 38.5,
-          "y": 10.5
+          "x": 35.5,
+          "y": 6.5
         },
         "direction": 12,
         "entity_number": 288
       },
       {
-        "name": "transport-belt",
+        "name": "inserter",
         "position": {
-          "x": 37.5,
-          "y": 10.5
+          "x": 25.5,
+          "y": 7.5
         },
-        "direction": 12,
         "entity_number": 289
       },
       {
-        "name": "transport-belt",
+        "name": "inserter",
         "position": {
-          "x": 40.5,
-          "y": 10.5
+          "x": 26.5,
+          "y": 7.5
         },
-        "direction": 12,
         "entity_number": 290
       },
       {
-        "name": "transport-belt",
+        "name": "small-electric-pole",
         "position": {
-          "x": 39.5,
-          "y": 10.5
+          "x": 27.5,
+          "y": 7.5
         },
-        "direction": 12,
         "entity_number": 291
       },
       {
-        "name": "transport-belt",
+        "name": "inserter",
         "position": {
-          "x": 42.5,
-          "y": 10.5
+          "x": 29.5,
+          "y": 7.5
         },
-        "direction": 12,
         "entity_number": 292
       },
       {
-        "name": "transport-belt",
+        "name": "inserter",
         "position": {
-          "x": 41.5,
-          "y": 10.5
+          "x": 30.5,
+          "y": 7.5
         },
-        "direction": 12,
         "entity_number": 293
       },
       {
-        "name": "transport-belt",
+        "name": "small-electric-pole",
         "position": {
-          "x": 44.5,
-          "y": 10.5
+          "x": 32.5,
+          "y": 7.5
         },
-        "direction": 12,
         "entity_number": 294
       },
       {
-        "name": "transport-belt",
+        "name": "inserter",
         "position": {
-          "x": 43.5,
-          "y": 10.5
+          "x": 34.5,
+          "y": 7.5
         },
-        "direction": 12,
         "entity_number": 295
       },
       {
-        "name": "transport-belt",
+        "name": "inserter",
         "position": {
-          "x": 46.5,
-          "y": 10.5
+          "x": 33.5,
+          "y": 7.5
         },
-        "direction": 12,
         "entity_number": 296
       },
       {
-        "name": "transport-belt",
+        "name": "stone-furnace",
         "position": {
-          "x": 45.5,
-          "y": 10.5
+          "x": 25,
+          "y": 9
         },
-        "direction": 12,
         "entity_number": 297
       },
       {
-        "name": "transport-belt",
+        "name": "inserter",
         "position": {
-          "x": 47.5,
+          "x": 25.5,
           "y": 10.5
         },
-        "direction": 12,
         "entity_number": 298
       },
       {
         "name": "inserter",
         "position": {
-          "x": 38.5,
-          "y": 9.5
+          "x": 26.5,
+          "y": 10.5
         },
-        "direction": 0,
         "entity_number": 299
       },
       {
-        "name": "inserter",
+        "name": "stone-furnace",
         "position": {
-          "x": 37.5,
-          "y": 9.5
+          "x": 27,
+          "y": 9
         },
-        "direction": 0,
         "entity_number": 300
       },
       {
         "name": "small-electric-pole",
         "position": {
-          "x": 39.5,
-          "y": 9.5
+          "x": 27.5,
+          "y": 10.5
         },
         "entity_number": 301
       },
       {
-        "name": "inserter",
+        "name": "stone-furnace",
         "position": {
-          "x": 42.5,
-          "y": 9.5
+          "x": 29,
+          "y": 9
         },
-        "direction": 0,
         "entity_number": 302
       },
       {
         "name": "inserter",
         "position": {
-          "x": 41.5,
-          "y": 9.5
+          "x": 29.5,
+          "y": 10.5
         },
-        "direction": 0,
         "entity_number": 303
       },
       {
-        "name": "small-electric-pole",
+        "name": "inserter",
         "position": {
-          "x": 44.5,
-          "y": 9.5
+          "x": 30.5,
+          "y": 10.5
         },
         "entity_number": 304
       },
       {
-        "name": "inserter",
+        "name": "stone-furnace",
         "position": {
-          "x": 45.5,
-          "y": 9.5
+          "x": 31,
+          "y": 9
         },
-        "direction": 0,
         "entity_number": 305
       },
       {
-        "name": "inserter",
+        "name": "small-electric-pole",
         "position": {
-          "x": 46.5,
-          "y": 9.5
+          "x": 32.5,
+          "y": 10.5
         },
-        "direction": 0,
         "entity_number": 306
       },
       {
         "name": "stone-furnace",
         "position": {
-          "x": 37,
-          "y": 8
+          "x": 33,
+          "y": 9
         },
         "entity_number": 307
       },
       {
         "name": "inserter",
         "position": {
-          "x": 38.5,
-          "y": 6.5
+          "x": 34.5,
+          "y": 10.5
         },
-        "direction": 0,
         "entity_number": 308
       },
       {
         "name": "inserter",
         "position": {
+          "x": 33.5,
+          "y": 10.5
+        },
+        "entity_number": 309
+      },
+      {
+        "name": "stone-furnace",
+        "position": {
+          "x": 35,
+          "y": 9
+        },
+        "entity_number": 310
+      },
+      {
+        "name": "transport-belt",
+        "position": {
+          "x": 24.5,
+          "y": 11.5
+        },
+        "direction": 12,
+        "entity_number": 311
+      },
+      {
+        "name": "transport-belt",
+        "position": {
+          "x": 25.5,
+          "y": 11.5
+        },
+        "direction": 12,
+        "entity_number": 312
+      },
+      {
+        "name": "transport-belt",
+        "position": {
+          "x": 26.5,
+          "y": 11.5
+        },
+        "direction": 12,
+        "entity_number": 313
+      },
+      {
+        "name": "transport-belt",
+        "position": {
+          "x": 27.5,
+          "y": 11.5
+        },
+        "direction": 12,
+        "entity_number": 314
+      },
+      {
+        "name": "transport-belt",
+        "position": {
+          "x": 28.5,
+          "y": 11.5
+        },
+        "direction": 12,
+        "entity_number": 315
+      },
+      {
+        "name": "transport-belt",
+        "position": {
+          "x": 29.5,
+          "y": 11.5
+        },
+        "direction": 12,
+        "entity_number": 316
+      },
+      {
+        "name": "transport-belt",
+        "position": {
+          "x": 30.5,
+          "y": 11.5
+        },
+        "direction": 12,
+        "entity_number": 317
+      },
+      {
+        "name": "transport-belt",
+        "position": {
+          "x": 31.5,
+          "y": 11.5
+        },
+        "direction": 12,
+        "entity_number": 318
+      },
+      {
+        "name": "transport-belt",
+        "position": {
+          "x": 32.5,
+          "y": 11.5
+        },
+        "direction": 12,
+        "entity_number": 319
+      },
+      {
+        "name": "transport-belt",
+        "position": {
+          "x": 33.5,
+          "y": 11.5
+        },
+        "direction": 12,
+        "entity_number": 320
+      },
+      {
+        "name": "transport-belt",
+        "position": {
+          "x": 34.5,
+          "y": 11.5
+        },
+        "direction": 12,
+        "entity_number": 321
+      },
+      {
+        "name": "transport-belt",
+        "position": {
+          "x": 35.5,
+          "y": 11.5
+        },
+        "direction": 12,
+        "entity_number": 322
+      },
+      {
+        "name": "transport-belt",
+        "position": {
+          "x": 36.5,
+          "y": 6.5
+        },
+        "direction": 12,
+        "entity_number": 323
+      },
+      {
+        "name": "transport-belt",
+        "position": {
+          "x": 38.5,
+          "y": 6.5
+        },
+        "direction": 12,
+        "entity_number": 324
+      },
+      {
+        "name": "transport-belt",
+        "position": {
           "x": 37.5,
           "y": 6.5
         },
-        "direction": 0,
-        "entity_number": 309
+        "direction": 12,
+        "entity_number": 325
+      },
+      {
+        "name": "transport-belt",
+        "position": {
+          "x": 40.5,
+          "y": 6.5
+        },
+        "direction": 12,
+        "entity_number": 326
+      },
+      {
+        "name": "transport-belt",
+        "position": {
+          "x": 39.5,
+          "y": 6.5
+        },
+        "direction": 12,
+        "entity_number": 327
+      },
+      {
+        "name": "transport-belt",
+        "position": {
+          "x": 42.5,
+          "y": 6.5
+        },
+        "direction": 12,
+        "entity_number": 328
+      },
+      {
+        "name": "transport-belt",
+        "position": {
+          "x": 41.5,
+          "y": 6.5
+        },
+        "direction": 12,
+        "entity_number": 329
+      },
+      {
+        "name": "transport-belt",
+        "position": {
+          "x": 44.5,
+          "y": 6.5
+        },
+        "direction": 12,
+        "entity_number": 330
+      },
+      {
+        "name": "transport-belt",
+        "position": {
+          "x": 43.5,
+          "y": 6.5
+        },
+        "direction": 12,
+        "entity_number": 331
+      },
+      {
+        "name": "transport-belt",
+        "position": {
+          "x": 46.5,
+          "y": 6.5
+        },
+        "direction": 12,
+        "entity_number": 332
+      },
+      {
+        "name": "transport-belt",
+        "position": {
+          "x": 45.5,
+          "y": 6.5
+        },
+        "direction": 12,
+        "entity_number": 333
+      },
+      {
+        "name": "transport-belt",
+        "position": {
+          "x": 47.5,
+          "y": 6.5
+        },
+        "direction": 12,
+        "entity_number": 334
+      },
+      {
+        "name": "inserter",
+        "position": {
+          "x": 37.5,
+          "y": 7.5
+        },
+        "entity_number": 335
+      },
+      {
+        "name": "inserter",
+        "position": {
+          "x": 38.5,
+          "y": 7.5
+        },
+        "entity_number": 336
       },
       {
         "name": "small-electric-pole",
         "position": {
           "x": 39.5,
-          "y": 6.5
+          "y": 7.5
         },
-        "entity_number": 310
-      },
-      {
-        "name": "stone-furnace",
-        "position": {
-          "x": 39,
-          "y": 8
-        },
-        "entity_number": 311
-      },
-      {
-        "name": "stone-furnace",
-        "position": {
-          "x": 41,
-          "y": 8
-        },
-        "entity_number": 312
-      },
-      {
-        "name": "inserter",
-        "position": {
-          "x": 42.5,
-          "y": 6.5
-        },
-        "direction": 0,
-        "entity_number": 313
+        "entity_number": 337
       },
       {
         "name": "inserter",
         "position": {
           "x": 41.5,
-          "y": 6.5
+          "y": 7.5
         },
-        "direction": 0,
-        "entity_number": 314
+        "entity_number": 338
+      },
+      {
+        "name": "inserter",
+        "position": {
+          "x": 42.5,
+          "y": 7.5
+        },
+        "entity_number": 339
       },
       {
         "name": "small-electric-pole",
         "position": {
           "x": 44.5,
-          "y": 6.5
+          "y": 7.5
         },
-        "entity_number": 315
-      },
-      {
-        "name": "stone-furnace",
-        "position": {
-          "x": 43,
-          "y": 8
-        },
-        "entity_number": 316
-      },
-      {
-        "name": "inserter",
-        "position": {
-          "x": 45.5,
-          "y": 6.5
-        },
-        "direction": 0,
-        "entity_number": 317
+        "entity_number": 340
       },
       {
         "name": "inserter",
         "position": {
           "x": 46.5,
-          "y": 6.5
+          "y": 7.5
         },
-        "direction": 0,
-        "entity_number": 318
+        "entity_number": 341
+      },
+      {
+        "name": "inserter",
+        "position": {
+          "x": 45.5,
+          "y": 7.5
+        },
+        "entity_number": 342
+      },
+      {
+        "name": "stone-furnace",
+        "position": {
+          "x": 37,
+          "y": 9
+        },
+        "entity_number": 343
+      },
+      {
+        "name": "inserter",
+        "position": {
+          "x": 37.5,
+          "y": 10.5
+        },
+        "entity_number": 344
+      },
+      {
+        "name": "inserter",
+        "position": {
+          "x": 38.5,
+          "y": 10.5
+        },
+        "entity_number": 345
+      },
+      {
+        "name": "stone-furnace",
+        "position": {
+          "x": 39,
+          "y": 9
+        },
+        "entity_number": 346
+      },
+      {
+        "name": "small-electric-pole",
+        "position": {
+          "x": 39.5,
+          "y": 10.5
+        },
+        "entity_number": 347
+      },
+      {
+        "name": "stone-furnace",
+        "position": {
+          "x": 41,
+          "y": 9
+        },
+        "entity_number": 348
+      },
+      {
+        "name": "inserter",
+        "position": {
+          "x": 41.5,
+          "y": 10.5
+        },
+        "entity_number": 349
+      },
+      {
+        "name": "inserter",
+        "position": {
+          "x": 42.5,
+          "y": 10.5
+        },
+        "entity_number": 350
+      },
+      {
+        "name": "stone-furnace",
+        "position": {
+          "x": 43,
+          "y": 9
+        },
+        "entity_number": 351
+      },
+      {
+        "name": "small-electric-pole",
+        "position": {
+          "x": 44.5,
+          "y": 10.5
+        },
+        "entity_number": 352
       },
       {
         "name": "stone-furnace",
         "position": {
           "x": 45,
-          "y": 8
+          "y": 9
         },
-        "entity_number": 319
+        "entity_number": 353
+      },
+      {
+        "name": "inserter",
+        "position": {
+          "x": 46.5,
+          "y": 10.5
+        },
+        "entity_number": 354
+      },
+      {
+        "name": "inserter",
+        "position": {
+          "x": 45.5,
+          "y": 10.5
+        },
+        "entity_number": 355
       },
       {
         "name": "stone-furnace",
         "position": {
           "x": 47,
-          "y": 8
+          "y": 9
         },
-        "entity_number": 320
+        "entity_number": 356
+      },
+      {
+        "name": "transport-belt",
+        "position": {
+          "x": 36.5,
+          "y": 11.5
+        },
+        "direction": 12,
+        "entity_number": 357
+      },
+      {
+        "name": "transport-belt",
+        "position": {
+          "x": 37.5,
+          "y": 11.5
+        },
+        "direction": 12,
+        "entity_number": 358
+      },
+      {
+        "name": "transport-belt",
+        "position": {
+          "x": 38.5,
+          "y": 11.5
+        },
+        "direction": 12,
+        "entity_number": 359
+      },
+      {
+        "name": "transport-belt",
+        "position": {
+          "x": 39.5,
+          "y": 11.5
+        },
+        "direction": 12,
+        "entity_number": 360
+      },
+      {
+        "name": "transport-belt",
+        "position": {
+          "x": 40.5,
+          "y": 11.5
+        },
+        "direction": 12,
+        "entity_number": 361
+      },
+      {
+        "name": "transport-belt",
+        "position": {
+          "x": 41.5,
+          "y": 11.5
+        },
+        "direction": 12,
+        "entity_number": 362
+      },
+      {
+        "name": "transport-belt",
+        "position": {
+          "x": 42.5,
+          "y": 11.5
+        },
+        "direction": 12,
+        "entity_number": 363
+      },
+      {
+        "name": "transport-belt",
+        "position": {
+          "x": 43.5,
+          "y": 11.5
+        },
+        "direction": 12,
+        "entity_number": 364
+      },
+      {
+        "name": "transport-belt",
+        "position": {
+          "x": 44.5,
+          "y": 11.5
+        },
+        "direction": 12,
+        "entity_number": 365
+      },
+      {
+        "name": "transport-belt",
+        "position": {
+          "x": 45.5,
+          "y": 11.5
+        },
+        "direction": 12,
+        "entity_number": 366
+      },
+      {
+        "name": "transport-belt",
+        "position": {
+          "x": 46.5,
+          "y": 11.5
+        },
+        "direction": 12,
+        "entity_number": 367
+      },
+      {
+        "name": "transport-belt",
+        "position": {
+          "x": 47.5,
+          "y": 11.5
+        },
+        "direction": 12,
+        "entity_number": 368
       }
     ],
     "wires": [
@@ -2826,7 +3162,7 @@
       [
         15,
         5,
-        24,
+        25,
         5
       ],
       [
@@ -2838,31 +3174,31 @@
       [
         18,
         5,
-        29,
+        30,
         5
       ],
       [
-        24,
+        25,
         5,
-        29,
+        30,
         5
       ],
       [
-        24,
+        25,
         5,
-        208,
+        199,
         5
       ],
       [
-        29,
+        30,
         5,
-        70,
+        71,
         5
       ],
       [
-        29,
+        30,
         5,
-        213,
+        202,
         5
       ],
       [
@@ -2874,7 +3210,7 @@
       [
         61,
         5,
-        70,
+        71,
         5
       ],
       [
@@ -2886,31 +3222,31 @@
       [
         64,
         5,
-        75,
+        76,
         5
       ],
       [
-        70,
+        71,
         5,
-        75,
+        76,
         5
       ],
       [
-        70,
+        71,
         5,
-        242,
+        245,
         5
       ],
       [
-        75,
+        76,
         5,
-        116,
+        117,
         5
       ],
       [
-        75,
+        76,
         5,
-        247,
+        248,
         5
       ],
       [
@@ -2922,7 +3258,7 @@
       [
         107,
         5,
-        116,
+        117,
         5
       ],
       [
@@ -2934,31 +3270,31 @@
       [
         110,
         5,
-        121,
+        122,
         5
       ],
       [
-        116,
+        117,
         5,
-        121,
+        122,
         5
       ],
       [
-        116,
+        117,
         5,
-        276,
+        291,
         5
       ],
       [
-        121,
+        122,
         5,
-        162,
+        163,
         5
       ],
       [
-        121,
+        122,
         5,
-        281,
+        294,
         5
       ],
       [
@@ -2970,31 +3306,31 @@
       [
         153,
         5,
-        162,
+        163,
         5
       ],
       [
         156,
         5,
-        167,
+        168,
         5
       ],
       [
-        162,
+        163,
         5,
-        167,
+        168,
         5
       ],
       [
-        162,
+        163,
         5,
-        310,
+        337,
         5
       ],
       [
-        167,
+        168,
         5,
-        315,
+        340,
         5
       ],
       [
@@ -3004,442 +3340,130 @@
         5
       ],
       [
-        202,
-        5,
-        233,
-        5
-      ],
-      [
-        208,
-        5,
-        213,
-        5
-      ],
-      [
-        208,
-        5,
         199,
+        5,
+        209,
         5
       ],
       [
-        213,
-        5,
-        242,
-        5
-      ],
-      [
-        213,
-        5,
         202,
-        5
-      ],
-      [
-        233,
         5,
-        236,
+        245,
         5
       ],
       [
-        236,
+        202,
         5,
-        267,
+        214,
         5
       ],
       [
-        242,
+        209,
         5,
-        247,
+        214,
         5
       ],
       [
-        242,
+        214,
         5,
-        233,
+        255,
         5
       ],
       [
-        247,
+        245,
         5,
-        276,
+        248,
         5
       ],
       [
-        247,
+        245,
         5,
-        236,
+        255,
         5
       ],
       [
-        267,
+        248,
         5,
-        270,
+        291,
         5
       ],
       [
-        270,
+        248,
         5,
-        301,
+        260,
         5
       ],
       [
-        276,
+        255,
         5,
-        281,
+        260,
         5
       ],
       [
-        276,
-        5,
-        267,
-        5
-      ],
-      [
-        281,
-        5,
-        310,
-        5
-      ],
-      [
-        281,
-        5,
-        270,
-        5
-      ],
-      [
-        301,
-        5,
-        304,
-        5
-      ],
-      [
-        310,
-        5,
-        315,
-        5
-      ],
-      [
-        310,
+        260,
         5,
         301,
         5
       ],
       [
-        315,
+        291,
         5,
-        304,
+        294,
         5
       ],
       [
-        3.5,
-        1.5,
-        3.5,
-        4.5
+        291,
+        5,
+        301,
+        5
       ],
       [
-        3.5,
-        4.5,
-        3.5,
-        6.5
+        294,
+        5,
+        337,
+        5
       ],
       [
-        3.5,
-        6.5,
-        3.5,
-        9.5
+        294,
+        5,
+        306,
+        5
       ],
       [
-        8.5,
-        1.5,
-        8.5,
-        4.5
+        301,
+        5,
+        306,
+        5
       ],
       [
-        8.5,
-        4.5,
-        8.5,
-        6.5
+        306,
+        5,
+        347,
+        5
       ],
       [
-        8.5,
-        6.5,
-        8.5,
-        9.5
+        337,
+        5,
+        340,
+        5
       ],
       [
-        15.5,
-        1.5,
-        15.5,
-        4.5
+        337,
+        5,
+        347,
+        5
       ],
       [
-        15.5,
-        4.5,
-        15.5,
-        6.5
+        340,
+        5,
+        352,
+        5
       ],
       [
-        15.5,
-        6.5,
-        15.5,
-        9.5
-      ],
-      [
-        20.5,
-        1.5,
-        20.5,
-        4.5
-      ],
-      [
-        20.5,
-        4.5,
-        20.5,
-        6.5
-      ],
-      [
-        20.5,
-        6.5,
-        20.5,
-        9.5
-      ],
-      [
-        27.5,
-        1.5,
-        27.5,
-        4.5
-      ],
-      [
-        27.5,
-        4.5,
-        27.5,
-        6.5
-      ],
-      [
-        27.5,
-        6.5,
-        27.5,
-        9.5
-      ],
-      [
-        32.5,
-        1.5,
-        32.5,
-        4.5
-      ],
-      [
-        32.5,
-        4.5,
-        32.5,
-        6.5
-      ],
-      [
-        32.5,
-        6.5,
-        32.5,
-        9.5
-      ],
-      [
-        39.5,
-        1.5,
-        39.5,
-        4.5
-      ],
-      [
-        39.5,
-        4.5,
-        39.5,
-        6.5
-      ],
-      [
-        39.5,
-        6.5,
-        39.5,
-        9.5
-      ],
-      [
-        44.5,
-        1.5,
-        44.5,
-        4.5
-      ],
-      [
-        44.5,
-        4.5,
-        44.5,
-        6.5
-      ],
-      [
-        44.5,
-        6.5,
-        44.5,
-        9.5
-      ],
-      [
-        3.5,
-        1.5,
-        8.5,
-        1.5
-      ],
-      [
-        8.5,
-        1.5,
-        15.5,
-        1.5
-      ],
-      [
-        15.5,
-        1.5,
-        20.5,
-        1.5
-      ],
-      [
-        20.5,
-        1.5,
-        27.5,
-        1.5
-      ],
-      [
-        27.5,
-        1.5,
-        32.5,
-        1.5
-      ],
-      [
-        32.5,
-        1.5,
-        39.5,
-        1.5
-      ],
-      [
-        39.5,
-        1.5,
-        44.5,
-        1.5
-      ],
-      [
-        3.5,
-        4.5,
-        8.5,
-        4.5
-      ],
-      [
-        8.5,
-        4.5,
-        15.5,
-        4.5
-      ],
-      [
-        15.5,
-        4.5,
-        20.5,
-        4.5
-      ],
-      [
-        20.5,
-        4.5,
-        27.5,
-        4.5
-      ],
-      [
-        27.5,
-        4.5,
-        32.5,
-        4.5
-      ],
-      [
-        32.5,
-        4.5,
-        39.5,
-        4.5
-      ],
-      [
-        39.5,
-        4.5,
-        44.5,
-        4.5
-      ],
-      [
-        3.5,
-        9.5,
-        8.5,
-        9.5
-      ],
-      [
-        8.5,
-        9.5,
-        15.5,
-        9.5
-      ],
-      [
-        15.5,
-        9.5,
-        20.5,
-        9.5
-      ],
-      [
-        20.5,
-        9.5,
-        27.5,
-        9.5
-      ],
-      [
-        27.5,
-        9.5,
-        32.5,
-        9.5
-      ],
-      [
-        32.5,
-        9.5,
-        39.5,
-        9.5
-      ],
-      [
-        39.5,
-        9.5,
-        44.5,
-        9.5
-      ],
-      [
-        3.5,
-        6.5,
-        8.5,
-        6.5
-      ],
-      [
-        8.5,
-        6.5,
-        15.5,
-        6.5
-      ],
-      [
-        15.5,
-        6.5,
-        20.5,
-        6.5
-      ],
-      [
-        20.5,
-        6.5,
-        27.5,
-        6.5
-      ],
-      [
-        27.5,
-        6.5,
-        32.5,
-        6.5
-      ],
-      [
-        32.5,
-        6.5,
-        39.5,
-        6.5
-      ],
-      [
-        39.5,
-        6.5,
-        44.5,
-        6.5
+        347,
+        5,
+        352,
+        5
       ]
     ],
     "item": "blueprint",

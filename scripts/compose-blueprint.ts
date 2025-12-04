@@ -221,13 +221,14 @@ async function main() {
       // belt directions remain consistent (belts need a mirror flip after a
       // 180° rotation to keep their flow orientation matching the rest of the
       // composed layout).
-      let tileRot = rot
-      let tileFlipX = flipX
-      let tileFlipY = flipY
-      if (rotateBottom && r >= Math.floor(rows / 2)) {
-        tileRot = (rot + 2) & 3
-        tileFlipX = !flipX
-      }
+      // Per-tile transform: default to requested rotation/flip.
+      // NOTE: removed special-case rotating/flipping the bottom half of the
+      // composed grid (previously enabled by --rotate-bottom). That behaviour
+      // caused inserters to be rotated twice in some compositions. Tiles will
+      // now use the same rot/flip flags as requested for all rows.
+      const tileRot = rot
+      const tileFlipX = flipX
+      const tileFlipY = flipY
 
   // compute this tile's footprint so we can align its xStart/yStart to the base footprint
   // Use the per-tile flip flags (tileFlipX/tileFlipY) so rotated+flipped
@@ -338,65 +339,6 @@ async function main() {
   // Attach the generated wires to the blueprint
   outBlueprint.wires = wires
 
-  // Auto-connect nearby power poles (small-electric-pole) to form a grid-like
-  // wiring pattern. Poles connect when aligned on the same X or Y and within
-  // a 7-tile radius. Connect nearest neighbors in each axis to form squares.
-  try {
-    const existingWires = Array.isArray(outBlueprint.wires) ? outBlueprint.wires.slice() : []
-    const poles = (outBlueprint.entities ?? []).filter((e: any) => e.name === 'small-electric-pole')
-      .map((p: any) => ({ x: Number((p.position.x ?? 0).toFixed(1)), y: Number((p.position.y ?? 0).toFixed(1)) }))
-
-    const wireSet = new Set(existingWires.map((w: any) => w.join(',')))
-    const newWires: Array<any> = []
-
-    // group by X and connect vertical neighbors
-    const byX = new Map<string, Array<{x:number,y:number}>>()
-    for (const p of poles) {
-      const key = p.x.toFixed(1)
-      let arr = byX.get(key)
-      if (!arr) { arr = []; byX.set(key, arr) }
-      arr.push(p)
-    }
-    for (const [kx, arr] of byX) {
-      arr.sort((a,b)=>a.y-b.y)
-      for (let i=0;i+1<arr.length;i++){
-        const a = arr[i]
-        const b = arr[i+1]
-        if (!a || !b) continue
-        if (Math.abs(b.y - a.y) <= 7) {
-          const key = `${a.x},${a.y},${b.x},${b.y}`
-          if (!wireSet.has(key)) { wireSet.add(key); newWires.push([a.x,a.y,b.x,b.y]) }
-        }
-      }
-    }
-
-    // group by Y and connect horizontal neighbors
-    const byY = new Map<string, Array<{x:number,y:number}>>()
-    for (const p of poles) {
-      const key = p.y.toFixed(1)
-      let arr = byY.get(key)
-      if (!arr) { arr = []; byY.set(key, arr) }
-      arr.push(p)
-    }
-    for (const [ky, arr] of byY) {
-      arr.sort((a,b)=>a.x-b.x)
-      for (let i=0;i+1<arr.length;i++){
-        const a = arr[i]
-        const b = arr[i+1]
-        if (!a || !b) continue
-        if (Math.abs(b.x - a.x) <= 7) {
-          const key = `${a.x},${a.y},${b.x},${b.y}`
-          if (!wireSet.has(key)) { wireSet.add(key); newWires.push([a.x,a.y,b.x,b.y]) }
-        }
-      }
-    }
-
-    outBlueprint.wires = existingWires.concat(newWires)
-  } catch (err) {
-    // non-fatal: wiring is a best-effort convenience
-    console.error('Failed to auto-generate wires:', err)
-  }
-
   const out = { blueprint: outBlueprint }
   if (outFile) {
     await fs.writeFile(outFile, JSON.stringify(out, null, 2), 'utf8')
@@ -404,18 +346,20 @@ async function main() {
   } else {
     process.stdout.write(JSON.stringify(out, null, 2) + '\n')
   }
-
-  if (preview && outFile) {
+  // Always produce a 2x2 ASCII representation of the composed blueprint
+  // immediately after writing the output file so callers get quick visual
+  // feedback. This intentionally runs unconditionally when an output file
+  // was requested.
+  if (outFile) {
     try {
-      // run the ascii renderer for quick verification
       const bin = process.execPath
-      const args = ['--no-warnings', '--loader', 'ts-node/esm', 'scripts/blueprint-ascii.ts', outFile]
+      const args = ['--no-warnings', '--loader', 'ts-node/esm', 'scripts/blueprint-ascii.ts', outFile, '--zoom-2']
       const p = spawnSync(bin, args, { cwd: path.resolve('.'), encoding: 'utf8' })
       if (p.error) console.error('preview error:', p.error)
       if (p.stdout) console.log(p.stdout)
       if (p.stderr) console.error(p.stderr)
     } catch (err) {
-      console.error('Failed to run preview:', err)
+      console.error('Failed to run ascii preview:', err)
     }
   }
 }

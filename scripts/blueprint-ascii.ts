@@ -65,6 +65,7 @@ async function main() {
   let outFile: string | undefined
   let zoom3 = false
   let zoom2 = false
+  let debug = false
   for (let i = 0; i < argv.length; i++) {
     const a = argv[i]
     if (a === '--quiet' || a === '-q') {
@@ -77,6 +78,10 @@ async function main() {
     }
     if (a === '--zoom-2') {
       zoom2 = true
+      continue
+    }
+    if (a === '--debug') {
+      debug = true
       continue
     }
     if (a === '--out' || a === '-o') {
@@ -142,8 +147,8 @@ async function main() {
   }
 
   // Debug: print computed footprints (helps verify why overlaps happen)
-  // When writing to a file, suppress debug output to keep file contents stable.
-  if (!quiet && !outFile) console.debug(JSON.stringify(footprints, null, 2))
+  // Controlled by --debug; when writing to a file, suppress debug output to keep file contents stable.
+  if (debug) console.debug(JSON.stringify(footprints, null, 2))
 
   if (footprints.length === 0) {
     console.error('No entities found in blueprint')
@@ -221,7 +226,7 @@ async function main() {
   }
 
   // Debug print: show bounds
-  if (!quiet && !outFile) console.debug({ minX, minY, width, height })
+  if (debug) console.debug({ minX, minY, width, height })
 
   // Build two output forms:
   // - fullOut: includes coordinate header and row labels (useful for interactive debugging)
@@ -260,7 +265,10 @@ async function main() {
       for (let bx = 0; bx < width; bx++) {
         const ent = tileEntities[by]![bx]
   const baseCh = ent ? (CHAR_MAP[ent.name] ?? '?') : '.'
-  const dInfo = dirChar(ent && typeof ent.direction === 'number' ? ent.direction : undefined, ent?.name)
+  // If an inserter lacks an explicit direction in the JSON, assume north (0)
+  // for visualization purposes so pickup/drop can still be shown.
+  const entDirForVisual = ent ? (typeof ent.direction === 'number' ? ent.direction : (ent.name === 'inserter' ? 0 : undefined)) : undefined
+  const dInfo = dirChar(entDirForVisual, ent?.name)
   const center = (dInfo as any).center
   const top = (dInfo as any).top
   const left = (dInfo as any).left
@@ -314,8 +322,10 @@ async function main() {
   const entChar: string = ent ? (CHAR_MAP[ent.name] ?? '?') : '.'
         const ox = bx * 2
         const oy = by * 2
-        if (ent && typeof ent.direction === 'number') {
-          const step = Math.floor(ent.direction / 4) & 3
+        if (ent) {
+          const dirVal = typeof ent.direction === 'number' ? ent.direction : (ent.name === 'inserter' ? 0 : undefined)
+          if (typeof dirVal === 'number') {
+            const step = Math.floor(dirVal / 4) & 3
           // inline mapping where arrow is orthogonally adjacent to the entity
           // Arrow is placed on the PICKUP side and points in the direction
           // items will move (toward the drop side). Prefer to keep the entity
@@ -338,7 +348,7 @@ async function main() {
           // pickup side relative to the inserter. Visual mapping should
           // therefore rotate by +2 (180°) so the arrow we draw (which is
           // placed on the pickup tile and points toward the drop) matches
-          // in-game behaviour.
+          // in-game behaviour for pickup/drop semantics.
           const visualStepBase = (ent && ent.name === 'inserter') ? ((step + 2) & 3) : step
           const d = dirs[visualStepBase & 3] as { x: number; y: number }
           let ax = ex + d.x
@@ -353,9 +363,12 @@ async function main() {
           // place entity char and arrow; arrow points in flow direction
           sub[oy + ey]![ox + ex] = entChar
           sub[oy + ay]![ox + ax] = arrowChars[visualStepBase]!
+          } else {
+            // no direction: place center on bottom-right
+            sub[oy + 1]![ox + 1] = entChar
+          }
         } else {
-          // no direction: place center on bottom-right
-          sub[oy + 1]![ox + 1] = entChar
+          // no entity: leave blank
         }
       }
     }
