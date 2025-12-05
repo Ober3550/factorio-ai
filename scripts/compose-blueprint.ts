@@ -88,12 +88,12 @@ function vecToDirStep(v: { x: number; y: number }) {
 }
 
 function rotatePos(x: number, y: number, rot: number) {
-  // rot steps clockwise (1 = 90deg)
+  // rot steps clockwise (1 = 90deg): (x, y) -> (-y, x)
   let nx = x, ny = y
   for (let i = 0; i < (rot & 3); i++) {
     const tx = nx
-    nx = ny
-    ny = -tx
+    nx = -ny
+    ny = tx
   }
   return { x: nx, y: ny }
 }

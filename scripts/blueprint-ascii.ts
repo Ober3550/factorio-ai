@@ -65,7 +65,9 @@ async function main() {
   let outFile: string | undefined
   let zoom3 = false
   let zoom2 = false
+  let zoom1 = false
   let debug = false
+  let clean = false
   for (let i = 0; i < argv.length; i++) {
     const a = argv[i]
     if (a === '--quiet' || a === '-q') {
@@ -80,8 +82,16 @@ async function main() {
       zoom2 = true
       continue
     }
+    if (a === '--zoom-1') {
+      zoom1 = true
+      continue
+    }
     if (a === '--debug') {
       debug = true
+      continue
+    }
+    if (a === '--clean') {
+      clean = true
       continue
     }
     if (a === '--out' || a === '-o') {
@@ -377,16 +387,22 @@ async function main() {
     const headCols: string[] = []
     for (let x = 0; x < subW; x++) headCols.push((x % 10).toString())
     let sb2 = ''
-    sb2 += '   ' + headCols.join('') + '\n'
+    if (!clean) {
+      sb2 += '   ' + headCols.join('') + '\n'
+    }
     for (let y = 0; y < subH; y++) {
-      sb2 += (Math.floor(minY) + Math.floor(y / 2)).toString().padStart(3, ' ') + ' ' + sub[y]!.join('') + '\n'
+      if (!clean) {
+        sb2 += (Math.floor(minY) + Math.floor(y / 2)).toString().padStart(3, ' ') + ' ' + sub[y]!.join('') + '\n'
+      } else {
+        sb2 += sub[y]!.join('') + '\n'
+      }
     }
     zoom2Out = sb2
   }
 
   if (outFile) {
     // When writing to a file, prefer zoomed outputs if requested
-    const toWrite = zoom3 && zoom3Out ? zoom3Out : (zoom2 && zoom2Out ? zoom2Out : gridOnly)
+    const toWrite = zoom3 && zoom3Out ? zoom3Out : zoom2 && zoom2Out ? zoom2Out : gridOnly
     await fs.writeFile(outFile, toWrite, 'utf8')
     // When writing to a file, avoid printing debug data; only print a short confirmation
     if (!quiet) console.log(`Wrote ASCII output to ${outFile}`)
@@ -394,6 +410,7 @@ async function main() {
     // Print the full (labeled) output to stdout for interactive use
     if (zoom3 && zoom3Out) process.stdout.write(zoom3Out)
     else if (zoom2 && zoom2Out) process.stdout.write(zoom2Out)
+    else if (zoom1) process.stdout.write(gridOnly)
     else process.stdout.write(fullOut)
   }
 }

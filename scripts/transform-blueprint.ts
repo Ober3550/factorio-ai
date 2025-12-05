@@ -21,11 +21,24 @@ function vecToDirStep(v: { x: number; y: number }) {
 }
 
 function rotatePos(x: number, y: number, rot: number) {
+  // Rotate clockwise by 90° per step: (x, y) -> (y, -x)
   let nx = x, ny = y
   for (let i = 0; i < (rot & 3); i++) {
     const tx = nx
     nx = ny
     ny = -tx
+  }
+  return { x: nx, y: ny }
+}
+
+function rotatePosClockwise(x: number, y: number, rot: number) {
+  // Rotate clockwise: (x, y) -> (y, -x)
+  // For 90° clockwise: (1, 0) -> (0, -1), (0, 1) -> (1, 0)
+  let nx = x, ny = y
+  for (let i = 0; i < (rot & 3); i++) {
+    const tx = nx
+    nx = -ny
+    ny = tx
   }
   return { x: nx, y: ny }
 }
@@ -51,12 +64,12 @@ function flipEntity(ent: Entity, fx: boolean, fy: boolean): Entity {
 
 function rotateEntity(ent: Entity, rotSteps: number): Entity {
   const out: Entity = { ...ent }
-  const rpos = rotatePos(ent.position.x, ent.position.y, rotSteps)
+  const rpos = rotatePosClockwise(ent.position.x, ent.position.y, rotSteps)
   out.position = { x: rpos.x, y: rpos.y }
   if (typeof ent.direction === 'number') {
     const step = Math.floor(ent.direction / 4) & 3
     const vec = dirStepToVec(step)
-    const rvec = rotatePos(vec.x, vec.y, rotSteps)
+    const rvec = rotatePosClockwise(vec.x, vec.y, rotSteps)
     const newStep = vecToDirStep({ x: Math.round(rvec.x), y: Math.round(rvec.y) })
     out.direction = newStep * 4
   }
