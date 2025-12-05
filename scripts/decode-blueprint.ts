@@ -88,6 +88,21 @@ async function main() {
   let outContent: string
   try {
     const parsed = JSON.parse(text as string)
+    // Only set a default direction for inserters and belts. Some blueprints
+    // intentionally omit direction for entities where it isn't required,
+    // so avoid forcing a value for everything. We target `inserter` and any
+    // entity whose name contains 'belt' (transport/underground/fast/etc.).
+    const bp = (parsed && parsed.blueprint) ? parsed.blueprint : parsed
+    if (bp && Array.isArray(bp.entities)) {
+      for (const e of bp.entities) {
+        const name = typeof e.name === 'string' ? e.name : ''
+        const isBelt = name.includes('belt')
+        const isInserter = name === 'inserter'
+        if (typeof e.direction === 'undefined' && (isInserter || isBelt)) {
+          e.direction = 0
+        }
+      }
+    }
     outContent = JSON.stringify(parsed, null, 2)
   } catch (e) {
     // Not valid JSON; write the text as-is

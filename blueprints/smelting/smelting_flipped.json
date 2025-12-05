@@ -20,7 +20,7 @@
         "name": "transport-belt",
         "position": {
           "x": 9.5,
-          "y": -14.5
+          "y": 14.5
         },
         "direction": 12
       },
@@ -29,7 +29,7 @@
         "name": "transport-belt",
         "position": {
           "x": 11.5,
-          "y": -14.5
+          "y": 14.5
         },
         "direction": 12
       },
@@ -38,7 +38,7 @@
         "name": "transport-belt",
         "position": {
           "x": 10.5,
-          "y": -14.5
+          "y": 14.5
         },
         "direction": 12
       },
@@ -47,7 +47,7 @@
         "name": "transport-belt",
         "position": {
           "x": 13.5,
-          "y": -14.5
+          "y": 14.5
         },
         "direction": 12
       },
@@ -56,7 +56,7 @@
         "name": "transport-belt",
         "position": {
           "x": 12.5,
-          "y": -14.5
+          "y": 14.5
         },
         "direction": 12
       },
@@ -65,7 +65,7 @@
         "name": "transport-belt",
         "position": {
           "x": 15.5,
-          "y": -14.5
+          "y": 14.5
         },
         "direction": 12
       },
@@ -74,7 +74,7 @@
         "name": "transport-belt",
         "position": {
           "x": 14.5,
-          "y": -14.5
+          "y": 14.5
         },
         "direction": 12
       },
@@ -83,7 +83,7 @@
         "name": "transport-belt",
         "position": {
           "x": 17.5,
-          "y": -14.5
+          "y": 14.5
         },
         "direction": 12
       },
@@ -92,7 +92,7 @@
         "name": "transport-belt",
         "position": {
           "x": 16.5,
-          "y": -14.5
+          "y": 14.5
         },
         "direction": 12
       },
@@ -101,7 +101,7 @@
         "name": "transport-belt",
         "position": {
           "x": 19.5,
-          "y": -14.5
+          "y": 14.5
         },
         "direction": 12
       },
@@ -110,7 +110,7 @@
         "name": "transport-belt",
         "position": {
           "x": 18.5,
-          "y": -14.5
+          "y": 14.5
         },
         "direction": 12
       },
@@ -119,7 +119,7 @@
         "name": "transport-belt",
         "position": {
           "x": 20.5,
-          "y": -14.5
+          "y": 14.5
         },
         "direction": 12
       },
@@ -128,25 +128,25 @@
         "name": "inserter",
         "position": {
           "x": 10.5,
-          "y": -13.5
+          "y": 13.5
         },
-        "direction": 0
+        "direction": 8
       },
       {
         "entity_number": 14,
         "name": "inserter",
         "position": {
           "x": 11.5,
-          "y": -13.5
+          "y": 13.5
         },
-        "direction": 0
+        "direction": 8
       },
       {
         "entity_number": 15,
         "name": "small-electric-pole",
         "position": {
           "x": 12.5,
-          "y": -13.5
+          "y": 13.5
         }
       },
       {
@@ -154,25 +154,25 @@
         "name": "inserter",
         "position": {
           "x": 14.5,
-          "y": -13.5
+          "y": 13.5
         },
-        "direction": 0
+        "direction": 8
       },
       {
         "entity_number": 17,
         "name": "inserter",
         "position": {
           "x": 15.5,
-          "y": -13.5
+          "y": 13.5
         },
-        "direction": 0
+        "direction": 8
       },
       {
         "entity_number": 18,
         "name": "small-electric-pole",
         "position": {
           "x": 17.5,
-          "y": -13.5
+          "y": 13.5
         }
       },
       {
@@ -180,25 +180,25 @@
         "name": "inserter",
         "position": {
           "x": 19.5,
-          "y": -13.5
+          "y": 13.5
         },
-        "direction": 0
+        "direction": 8
       },
       {
         "entity_number": 20,
         "name": "inserter",
         "position": {
           "x": 18.5,
-          "y": -13.5
+          "y": 13.5
         },
-        "direction": 0
+        "direction": 8
       },
       {
         "entity_number": 21,
         "name": "stone-furnace",
         "position": {
           "x": 10,
-          "y": -12
+          "y": 12
         }
       },
       {
@@ -206,25 +206,25 @@
         "name": "inserter",
         "position": {
           "x": 10.5,
-          "y": -10.5
+          "y": 10.5
         },
-        "direction": 0
+        "direction": 8
       },
       {
         "entity_number": 23,
         "name": "inserter",
         "position": {
           "x": 11.5,
-          "y": -10.5
+          "y": 10.5
         },
-        "direction": 0
+        "direction": 8
       },
       {
         "entity_number": 24,
         "name": "stone-furnace",
         "position": {
           "x": 12,
-          "y": -12
+          "y": 12
         }
       },
       {
@@ -232,7 +232,7 @@
         "name": "small-electric-pole",
         "position": {
           "x": 12.5,
-          "y": -10.5
+          "y": 10.5
         }
       },
       {
@@ -240,7 +240,7 @@
         "name": "stone-furnace",
         "position": {
           "x": 14,
-          "y": -12
+          "y": 12
         }
       },
       {
@@ -248,25 +248,25 @@
         "name": "inserter",
         "position": {
           "x": 14.5,
-          "y": -10.5
+          "y": 10.5
         },
-        "direction": 0
+        "direction": 8
       },
       {
         "entity_number": 28,
         "name": "inserter",
         "position": {
           "x": 15.5,
-          "y": -10.5
+          "y": 10.5
         },
-        "direction": 0
+        "direction": 8
       },
       {
         "entity_number": 29,
         "name": "stone-furnace",
         "position": {
           "x": 16,
-          "y": -12
+          "y": 12
         }
       },
       {
@@ -274,7 +274,7 @@
         "name": "small-electric-pole",
         "position": {
           "x": 17.5,
-          "y": -10.5
+          "y": 10.5
         }
       },
       {
@@ -282,7 +282,7 @@
         "name": "stone-furnace",
         "position": {
           "x": 18,
-          "y": -12
+          "y": 12
         }
       },
       {
@@ -290,25 +290,25 @@
         "name": "inserter",
         "position": {
           "x": 19.5,
-          "y": -10.5
+          "y": 10.5
         },
-        "direction": 0
+        "direction": 8
       },
       {
         "entity_number": 33,
         "name": "inserter",
         "position": {
           "x": 18.5,
-          "y": -10.5
+          "y": 10.5
         },
-        "direction": 0
+        "direction": 8
       },
       {
         "entity_number": 34,
         "name": "stone-furnace",
         "position": {
           "x": 20,
-          "y": -12
+          "y": 12
         }
       },
       {
@@ -316,7 +316,7 @@
         "name": "transport-belt",
         "position": {
           "x": 9.5,
-          "y": -9.5
+          "y": 9.5
         },
         "direction": 12
       },
@@ -325,7 +325,7 @@
         "name": "transport-belt",
         "position": {
           "x": 10.5,
-          "y": -9.5
+          "y": 9.5
         },
         "direction": 12
       },
@@ -334,7 +334,7 @@
         "name": "transport-belt",
         "position": {
           "x": 11.5,
-          "y": -9.5
+          "y": 9.5
         },
         "direction": 12
       },
@@ -343,7 +343,7 @@
         "name": "transport-belt",
         "position": {
           "x": 12.5,
-          "y": -9.5
+          "y": 9.5
         },
         "direction": 12
       },
@@ -352,7 +352,7 @@
         "name": "transport-belt",
         "position": {
           "x": 13.5,
-          "y": -9.5
+          "y": 9.5
         },
         "direction": 12
       },
@@ -361,7 +361,7 @@
         "name": "transport-belt",
         "position": {
           "x": 14.5,
-          "y": -9.5
+          "y": 9.5
         },
         "direction": 12
       },
@@ -370,7 +370,7 @@
         "name": "transport-belt",
         "position": {
           "x": 15.5,
-          "y": -9.5
+          "y": 9.5
         },
         "direction": 12
       },
@@ -379,7 +379,7 @@
         "name": "transport-belt",
         "position": {
           "x": 16.5,
-          "y": -9.5
+          "y": 9.5
         },
         "direction": 12
       },
@@ -388,7 +388,7 @@
         "name": "transport-belt",
         "position": {
           "x": 17.5,
-          "y": -9.5
+          "y": 9.5
         },
         "direction": 12
       },
@@ -397,7 +397,7 @@
         "name": "transport-belt",
         "position": {
           "x": 18.5,
-          "y": -9.5
+          "y": 9.5
         },
         "direction": 12
       },
@@ -406,7 +406,7 @@
         "name": "transport-belt",
         "position": {
           "x": 19.5,
-          "y": -9.5
+          "y": 9.5
         },
         "direction": 12
       },
@@ -415,7 +415,7 @@
         "name": "transport-belt",
         "position": {
           "x": 20.5,
-          "y": -9.5
+          "y": 9.5
         },
         "direction": 12
       }
