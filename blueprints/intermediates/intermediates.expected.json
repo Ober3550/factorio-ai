@@ -1,0 +1,70 @@
+{
+  "blueprint": "blueprints/intermediates/intermediates.json",
+  "description": "Expected inserter counts for intermediates blueprint based on Factorio in-game Rate Calculator. These are the values shown in the game's Rate Calculator tool.",
+  "notes": {
+    "inserter_model": "base inserter (swing time 72 ticks in game)",
+    "why_different": "Our calculator uses swing time 70 ticks which gives slightly different rates. Factorio's game uses 72 ticks for the base inserter."
+  },
+  "items": [
+    {
+      "type": "machine",
+      "name": "assembling-machine-2",
+      "recipe": "copper-cable",
+      "count": 2
+    },
+    {
+      "type": "machine",
+      "name": "assembling-machine-1",
+      "recipe": "electronic-circuit",
+      "count": 2
+    },
+    {
+      "type": "machine",
+      "name": "assembling-machine-1",
+      "recipe": "iron-gear-wheel",
+      "count": 2
+    },
+    {
+      "type": "output",
+      "name": "copper-cable",
+      "rateItemsPerMin": 360,
+      "inserters": 7.2
+    },
+    {
+      "type": "input",
+      "name": "copper-plate",
+      "rateItemsPerMin": 180,
+      "inserters": 3.6
+    },
+    {
+      "type": "output",
+      "name": "electronic-circuit",
+      "rateItemsPerMin": 120,
+      "inserters": 2.4
+    },
+    {
+      "type": "input",
+      "name": "iron-plate",
+      "rateItemsPerMin": 120,
+      "inserters": 2.4
+    },
+    {
+      "type": "input",
+      "name": "copper-cable",
+      "rateItemsPerMin": 360,
+      "inserters": 7.2
+    },
+    {
+      "type": "output",
+      "name": "iron-gear-wheel",
+      "rateItemsPerMin": 120,
+      "inserters": 2.4
+    },
+    {
+      "type": "input",
+      "name": "iron-plate",
+      "rateItemsPerMin": 240,
+      "inserters": 4.8
+    }
+  ]
+}

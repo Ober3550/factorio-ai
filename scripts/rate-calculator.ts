@@ -14,12 +14,12 @@ import * as path from 'path'
 
 // Inserter specifications
 const INSERTER_SPECS: Record<string, { baseStack: number; maxResearchStack: number; swingTicks: number }> = {
-  'burner-inserter': { baseStack: 1, maxResearchStack: 4, swingTicks: 76 },
-  'inserter': { baseStack: 1, maxResearchStack: 4, swingTicks: 70 },
-  'long-handed-inserter': { baseStack: 1, maxResearchStack: 4, swingTicks: 50 },
-  'fast-inserter': { baseStack: 1, maxResearchStack: 4, swingTicks: 24 },
-  'bulk-inserter': { baseStack: 2, maxResearchStack: 12, swingTicks: 24 },
-  'stack-inserter': { baseStack: 6, maxResearchStack: 16, swingTicks: 24 },
+  'burner-inserter': { baseStack: 1, maxResearchStack: 4, swingTicks: 80 },
+  'inserter': { baseStack: 1, maxResearchStack: 4, swingTicks: 72 },
+  'long-handed-inserter': { baseStack: 1, maxResearchStack: 4, swingTicks: 55 },
+  'fast-inserter': { baseStack: 1, maxResearchStack: 4, swingTicks: 26 },
+  'bulk-inserter': { baseStack: 2, maxResearchStack: 12, swingTicks: 26 },
+  'stack-inserter': { baseStack: 6, maxResearchStack: 16, swingTicks: 26 },
 }
 
 // Belt speeds in items per second per lane
@@ -66,6 +66,49 @@ interface RateCalculation {
 const FURNACE_SPECS = {
   smeltTimeSeconds: 3.2,
   energyConsumptionJoulesPerSecond: 90000,
+}
+
+/**
+ * Recipe specifications: inputs, outputs, and crafting time in seconds
+ * Assembly machine-1 has a crafting speed of 0.5 (50%)
+ * Assembly machine-2 has a crafting speed of 0.75 (75%)
+ * Assembly machine-3 has a crafting speed of 1.25 (125%)
+ */
+const RECIPE_SPECS: Record<string, { inputs: Record<string, number>; outputs: Record<string, number>; craftTimeSeconds: number }> = {
+  'copper-cable': {
+    inputs: { 'copper-plate': 1 },
+    outputs: { 'copper-cable': 2 },
+    craftTimeSeconds: 0.5,
+  },
+  'electronic-circuit': {
+    inputs: { 'iron-plate': 1, 'copper-cable': 3 },
+    outputs: { 'electronic-circuit': 1 },
+    craftTimeSeconds: 0.5,
+  },
+  'iron-gear-wheel': {
+    inputs: { 'iron-plate': 2 },
+    outputs: { 'iron-gear-wheel': 1 },
+    craftTimeSeconds: 0.5,
+  },
+  'automation-science-pack': {
+    inputs: { 'copper-plate': 1, 'iron-gear-wheel': 1 },
+    outputs: { 'automation-science-pack': 1 },
+    craftTimeSeconds: 5,
+  },
+  'logistics-science-pack': {
+    inputs: { 'transport-belt': 1, 'inserter': 1 },
+    outputs: { 'logistics-science-pack': 1 },
+    craftTimeSeconds: 5,
+  },
+}
+
+/**
+ * Assembly machine crafting speeds
+ */
+const MACHINE_SPEEDS: Record<string, number> = {
+  'assembling-machine-1': 0.5,
+  'assembling-machine-2': 0.75,
+  'assembling-machine-3': 1.25,
 }
 
 /**
@@ -304,12 +347,173 @@ Examples:
   const furnaceNames = new Set(['stone-furnace', 'steel-furnace', 'electric-furnace'])
   const furnaceCount = entities.filter((e: any) => furnaceNames.has(e.name)).length
   
-  if (furnaceCount === 0) {
-    console.error('Error: No furnaces found in blueprint')
+  // Count assembly machines by recipe
+  const assemblyNames = new Set(['assembling-machine-1', 'assembling-machine-2', 'assembling-machine-3'])
+  const assemblyMachines = entities.filter((e: any) => assemblyNames.has(e.name) && e.recipe)
+  
+  // Group assembly machines by recipe
+  const recipeGroups: Record<string, any[]> = {}
+  for (const machine of assemblyMachines) {
+    const recipe = machine.recipe || 'unknown'
+    if (!recipeGroups[recipe]) recipeGroups[recipe] = []
+    recipeGroups[recipe].push(machine)
+  }
+  
+  if (furnaceCount === 0 && assemblyMachines.length === 0) {
+    console.error('Error: No furnaces or assembly machines found in blueprint')
     process.exit(1)
   }
   
-  // Calculate rates
+  // If we have assembly machines, analyze them
+  if (assemblyMachines.length > 0) {
+    // Get inserter speed first
+    const ticksPerSecond = 60
+    const swingTimeSeconds = inserterSpec.swingTicks / ticksPerSecond
+    const baseItemsPerSec = inserterSpec.baseStack / swingTimeSeconds
+    const baseItemsPerMin = baseItemsPerSec * 60
+    
+    // Build items array with machines first, then inputs and outputs
+    const items: any[] = []
+    
+    // Add all recipe groups as machine entries
+    for (const [recipe, machines] of Object.entries(recipeGroups)) {
+      items.push({
+        type: 'machine',
+        name: machines[0].name, // e.g., assembling-machine-1
+        recipe,
+        count: machines.length,
+      })
+    }
+    
+    // Add input/output/fuel items based on recipes
+    // For now, show rates based on recipe crafting time
+    for (const [recipe, machines] of Object.entries(recipeGroups)) {
+      const recipeSpec = RECIPE_SPECS[recipe]
+      if (!recipeSpec) continue
+      
+      const craftTimeSeconds = recipeSpec.craftTimeSeconds
+      const machineCount = machines.length
+      const machineName = machines[0].name
+      const machineSpeed = MACHINE_SPEEDS[machineName] || 0.5
+      
+      // Actual craft time = base craft time / crafting speed
+      // Each machine produces outputs per actual craft time
+      // Total production rate: (machineCount * outputs) / actualCraftTime items per second
+      
+      for (const [outputItem, outputCount] of Object.entries(recipeSpec.outputs)) {
+        // Actual craft time based on machine speed
+        const actualCraftTimeSeconds = craftTimeSeconds / machineSpeed
+        const totalProductionPerSec = (machineCount * outputCount) / actualCraftTimeSeconds
+        const totalProductionPerMin = totalProductionPerSec * 60
+        
+        // Add output item (belt/inserter counts as decimals rounded to 2dp)
+        items.push({
+          type: 'output',
+          name: outputItem,
+          rateItemsPerSec: totalProductionPerSec,
+          rateItemsPerMin: totalProductionPerMin,
+          belts: Number((totalProductionPerMin / (beltSpeed * 60)).toFixed(2)),
+          inserters: Number((totalProductionPerMin / baseItemsPerMin).toFixed(2)),
+        })
+      }
+      
+      // Add input items
+      for (const [inputItem, inputCount] of Object.entries(recipeSpec.inputs)) {
+        const actualCraftTimeSeconds = craftTimeSeconds / machineSpeed
+        const totalInputPerSec = (machineCount * inputCount) / actualCraftTimeSeconds
+        const totalInputPerMin = totalInputPerSec * 60
+        
+        items.push({
+          type: 'input',
+          name: inputItem,
+          rateItemsPerSec: totalInputPerSec,
+          rateItemsPerMin: totalInputPerMin,
+          belts: Number((totalInputPerMin / (beltSpeed * 60)).toFixed(2)),
+          inserters: Number((totalInputPerMin / baseItemsPerMin).toFixed(2)),
+        })
+      }
+    }
+    
+    if (showResearch) {
+      const maxItemsPerSec = inserterSpec.maxResearchStack / swingTimeSeconds
+      const maxItemsPerMin = maxItemsPerSec * 60
+      
+      items.forEach((item: any) => {
+        if (item.type === 'input' || item.type === 'output') {
+          item.inserters_maxResearch = Number((item.rateItemsPerMin / maxItemsPerMin).toFixed(2))
+        }
+      })
+    }
+    
+    const output = {
+      blueprint: blueprintFile,
+      items,
+    }
+    
+    if (asJson) {
+      console.log(JSON.stringify(output, null, 2))
+    } else {
+      const lines = [
+        '═══════════════════════════════════════════════════════════════',
+        'FACTORIO RATE CALCULATOR',
+        '═══════════════════════════════════════════════════════════════',
+        '',
+        `Blueprint: ${blueprintFile}`,
+        '',
+      ]
+      
+      // Add machines section
+      lines.push('───────────────────────────────────────────────────────────────')
+      lines.push('MACHINES')
+      lines.push('───────────────────────────────────────────────────────────────')
+      for (const [recipe, machines] of Object.entries(recipeGroups)) {
+        lines.push(`${recipe}: ${machines.length} ${machines[0].name}`)
+      }
+      
+      // Add recipes section
+      lines.push('')
+      lines.push('───────────────────────────────────────────────────────────────')
+      lines.push('RECIPES')
+      lines.push('───────────────────────────────────────────────────────────────')
+      for (const [recipe, machines] of Object.entries(recipeGroups)) {
+        const recipeSpec = RECIPE_SPECS[recipe]
+        if (!recipeSpec) continue
+        
+        const machineName = machines[0].name
+        const machineSpeed = MACHINE_SPEEDS[machineName] || 0.5
+        const actualCraftTimeSeconds = recipeSpec.craftTimeSeconds / machineSpeed
+        const machineCount = machines.length
+        
+        // Show output rates for each output item
+        const outputs = Object.entries(recipeSpec.outputs)
+          .map(([item, count]) => {
+            const perMin = (machineCount * count / actualCraftTimeSeconds) * 60
+            return `${perMin.toFixed(2)} ${item}`
+          })
+          .join(', ')
+        
+        // Show input rates for each input item
+        const inputs = Object.entries(recipeSpec.inputs)
+          .map(([item, count]) => {
+            const perMin = (machineCount * count / actualCraftTimeSeconds) * 60
+            return `${perMin.toFixed(2)} ${item}`
+          })
+          .join(', ')
+        
+        lines.push(`${recipe} (${machineCount} × ${machineName} @ ${(machineSpeed * 100).toFixed(0)}%):`)
+        lines.push(`  Outputs: ${outputs}`)
+        lines.push(`  Inputs: ${inputs}`)
+      }
+      
+      lines.push('')
+      lines.push('═══════════════════════════════════════════════════════════════')
+      
+      console.log(lines.join('\n'))
+    }
+    return
+  }
+  
+  // Handle furnaces
   const furnaceRate = getFurnaceRate()
   const totalProductionRate = furnaceCount * furnaceRate // items/minute output
   const totalEnergyConsumption = furnaceCount * FURNACE_SPECS.energyConsumptionJoulesPerSecond // joules/second
@@ -320,7 +524,7 @@ Examples:
   
   // Get belt and inserter speeds
   const beltItemsPerMin = beltSpeed * 60
-  const beltLanesRequired = Math.ceil(totalProductionRate / beltItemsPerMin)
+  const beltLanesRequired = Number((totalProductionRate / beltItemsPerMin).toFixed(2))
   
   // Get inserter speed
   const ticksPerSecond = 60
@@ -328,14 +532,14 @@ Examples:
   
   const baseItemsPerSec = inserterSpec.baseStack / swingTimeSeconds
   const baseItemsPerMin = baseItemsPerSec * 60
-  const baseInsertorsRequired = Math.ceil(totalProductionRate / baseItemsPerMin)
+  const baseInsertorsRequired = Number((totalProductionRate / baseItemsPerMin).toFixed(2))
   
   let maxItemsPerMin = 0
   let maxInsertorsRequired = 0
   if (showResearch) {
     const maxItemsPerSec = inserterSpec.maxResearchStack / swingTimeSeconds
-    maxItemsPerMin = maxItemsPerSec * 60
-    maxInsertorsRequired = Math.ceil(totalProductionRate / maxItemsPerMin)
+  maxItemsPerMin = maxItemsPerSec * 60
+  maxInsertorsRequired = Number((totalProductionRate / maxItemsPerMin).toFixed(2))
   }
   
   // Format output
@@ -354,7 +558,7 @@ Examples:
         rateItemsPerSec: totalProductionRate / 60,
         rateItemsPerMin: totalProductionRate,
         belts: beltLanesRequired,
-        inserters: Math.ceil(totalProductionRate / baseItemsPerMin),
+        inserters: Number((totalProductionRate / baseItemsPerMin).toFixed(2)),
       },
       {
         type: 'output',
@@ -362,15 +566,15 @@ Examples:
         rateItemsPerSec: totalProductionRate / 60,
         rateItemsPerMin: totalProductionRate,
         belts: beltLanesRequired,
-        inserters: Math.ceil(totalProductionRate / baseItemsPerMin),
+        inserters: Number((totalProductionRate / baseItemsPerMin).toFixed(2)),
       },
       {
         type: 'fuel',
         name: 'coal',
         rateItemsPerSec: coalConsumption / 60,
         rateItemsPerMin: coalConsumption,
-        belts: Math.ceil(coalConsumption / (beltSpeed * 60)),
-        inserters: Math.ceil(coalConsumption / baseItemsPerMin),
+        belts: Number((coalConsumption / (beltSpeed * 60)).toFixed(2)),
+        inserters: Number((coalConsumption / baseItemsPerMin).toFixed(2)),
       },
     ]
 
@@ -381,7 +585,7 @@ Examples:
       items.forEach((item: any) => {
         if (item.type === 'input' || item.type === 'output' || item.type === 'fuel') {
           const rate = item.type === 'fuel' ? coalConsumption : totalProductionRate
-          item.inserters_maxResearch = Math.ceil(rate / maxItemsPerMin)
+          item.inserters_maxResearch = Number((rate / maxItemsPerMin).toFixed(2))
         }
       })
     }
