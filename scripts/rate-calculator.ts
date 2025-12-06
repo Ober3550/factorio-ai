@@ -95,10 +95,20 @@ const RECIPE_SPECS: Record<string, { inputs: Record<string, number>; outputs: Re
     outputs: { 'automation-science-pack': 1 },
     craftTimeSeconds: 5,
   },
-  'logistics-science-pack': {
+  'logistic-science-pack': {
     inputs: { 'transport-belt': 1, 'inserter': 1 },
-    outputs: { 'logistics-science-pack': 1 },
+    outputs: { 'logistic-science-pack': 1 },
     craftTimeSeconds: 5,
+  },
+  'transport-belt': {
+    inputs: { 'iron-plate': 1, 'iron-gear-wheel': 1 },
+    outputs: { 'transport-belt': 1 },
+    craftTimeSeconds: 0.5,
+  },
+  'inserter': {
+    inputs: { 'iron-plate': 1, 'iron-gear-wheel': 1, 'copper-cable': 1 },
+    outputs: { 'inserter': 1 },
+    craftTimeSeconds: 0.5,
   },
 }
 
@@ -374,6 +384,24 @@ Examples:
     
     // Build items array with machines first, then inputs and outputs
     const items: any[] = []
+    
+    // Check for unknown recipes and report them
+    const unknownRecipes = Object.keys(recipeGroups).filter(r => !RECIPE_SPECS[r])
+    if (unknownRecipes.length > 0) {
+      console.error('ERROR: The following recipes are not recognized by the rate calculator:')
+      unknownRecipes.forEach(recipe => {
+        const machines = recipeGroups[recipe]
+        if (machines) {
+          const machineCount = machines.length
+          const machineName = machines[0].name
+          console.error(`  - "${recipe}" (${machineCount}x ${machineName})`)
+        }
+      })
+      console.error('')
+      console.error('Please add recipe specifications to RECIPE_SPECS in rate-calculator.ts')
+      console.error('Each recipe must define: inputs, outputs, and craftTimeSeconds')
+      process.exit(1)
+    }
     
     // Add all recipe groups as machine entries
     for (const [recipe, machines] of Object.entries(recipeGroups)) {
