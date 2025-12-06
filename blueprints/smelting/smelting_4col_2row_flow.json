@@ -1,0 +1,122 @@
+{
+  "input_file": "blueprints/smelting/smelting_4col_2row.json",
+  "total_entities": 320,
+  "recipe": "unnamed",
+  "recipe_time_sec": 3.5,
+  "throughput": {
+    "perEntity": {
+      "stone-furnace": {
+        "count": 48,
+        "speed": 1,
+        "items_per_sec": 13.714285714285714,
+        "items_per_min": 822.8571428571428
+      }
+    },
+    "totalPerSec": 13.714285714285714,
+    "totalPerMin": 822.8571428571428
+  },
+  "counts": {
+    "transport-belt": 144,
+    "inserter": 96,
+    "small-electric-pole": 32,
+    "stone-furnace": 48
+  },
+  "belt_components_count": 3,
+  "belt_components": [
+    {
+      "cap": 15,
+      "cx": 24.5,
+      "cy": 1,
+      "size": 48
+    },
+    {
+      "cap": 15,
+      "cx": 24.5,
+      "cy": 6,
+      "size": 48
+    },
+    {
+      "cap": 15,
+      "cx": 24.5,
+      "cy": 11,
+      "size": 48
+    }
+  ],
+  "input_components": [
+    {
+      "cap": 15,
+      "cx": 24.5
+    }
+  ],
+  "output_component": {
+    "cap": 15,
+    "cx": 24.5
+  },
+  "input_capacity_per_sec": 15,
+  "effective_ore_input_per_sec": 7.5,
+  "output_capacity_per_sec": 15,
+  "belt_bottleneck": false,
+  "inserter_analysis": {
+    "inserter": {
+      "count": 96,
+      "swingTicks": 70,
+      "base": {
+        "itemsPerMinute": 51.42857142857143,
+        "itemsPerSwing": 1,
+        "ticksPerItem": 70
+      },
+      "maxResearch": {
+        "itemsPerMinute": 205.71428571428572,
+        "itemsPerSwing": 4,
+        "ticksPerItem": 17.5
+      },
+      "fuelAnalysis": {
+        "coal": {
+          "base": {
+            "itemsPerMinute": 51.42857142857143,
+            "energyMJPerMinute": 205.71428571428572
+          },
+          "maxResearch": {
+            "itemsPerMinute": 205.71428571428572,
+            "energyMJPerMinute": 822.8571428571429
+          }
+        }
+      }
+    }
+  },
+  "summary": {
+    "input_belts_count": 1,
+    "output_belts_count": 1,
+    "plates_per_min": 5760,
+    "fuel_capacity": {
+      "coal": {
+        "base": {
+          "items_per_min": 4937.142857142857,
+          "items_per_sec": 82.28571428571428,
+          "energy_MJ_per_min": 19748.571428571428,
+          "energy_MJ_per_sec": 329.1428571428571
+        },
+        "max": {
+          "items_per_min": 19748.571428571428,
+          "items_per_sec": 329.1428571428571,
+          "energy_MJ_per_min": 78994.28571428571,
+          "energy_MJ_per_sec": 1316.5714285714284
+        }
+      },
+      "solid-fuel": {
+        "base": {
+          "items_per_min": 4937.142857142857,
+          "items_per_sec": 82.28571428571428,
+          "energy_MJ_per_min": 59245.71428571428,
+          "energy_MJ_per_sec": 987.4285714285713
+        },
+        "max": {
+          "items_per_min": 19748.571428571428,
+          "items_per_sec": 329.1428571428571,
+          "energy_MJ_per_min": 236982.85714285713,
+          "energy_MJ_per_sec": 3949.7142857142853
+        }
+      }
+    }
+  }
+}
