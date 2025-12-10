@@ -10,7 +10,8 @@ import { writeJsonFile } from '../src/lib/file-utils.js'
 // Simple argument parser (avoiding parseArgs compatibility issues)
 function parseArguments() {
   const args = process.argv.slice(2)
-  const values: Record<string, string | boolean | undefined> = {
+  const values: Record<string, string | boolean | string[] | undefined> = {
+    item: [],
     'rate-unit': 'm',
     assembler: 'assembling-machine-2',
     furnace: 'stone-furnace',
@@ -21,6 +22,7 @@ function parseArguments() {
     'clear-cache': false,
     json: false,
     quiet: false,
+    rate: undefined,
     output: undefined
   }
 
@@ -30,6 +32,17 @@ function parseArguments() {
       const key = arg.slice(2)
       if (key === 'no-cache' || key === 'clear-cache' || key === 'json' || key === 'quiet') {
         values[key] = true
+      } else if (key === 'item') {
+        // Collect multiple --item arguments
+        if (i + 1 < args.length) {
+          const nextArg = args[i + 1]
+          if (nextArg && !nextArg.startsWith('--')) {
+            if (Array.isArray(values.item)) {
+              values.item.push(nextArg)
+            }
+            i++
+          }
+        }
       } else if (i + 1 < args.length) {
         const nextArg = args[i + 1]
         if (nextArg && !nextArg.startsWith('--')) {
@@ -53,9 +66,10 @@ try {
 
 async function main() {
   // Validate required arguments
-  if (!values.item || !values.rate) {
-    console.error('Error: --item and --rate are required')
-    console.error('Usage: calculate-requirements --item <item-id> --rate <number> [options]')
+  const items = Array.isArray(values.item) ? values.item : []
+  if (items.length === 0 || !values.rate) {
+    console.error('Error: --item (one or more) and --rate are required')
+    console.error('Usage: calculate-requirements --item <item-id> [--item <item-id>...] --rate <number> [options]')
     process.exit(1)
   }
 
@@ -65,9 +79,9 @@ async function main() {
     process.exit(1)
   }
 
-  // Build calculator config
+  // Build calculator config with all items
   const config: CalculatorConfig = {
-    items: [{ name: values.item as string, rate }],
+    items: items.map(name => ({ name, rate })),
     rateUnit: values['rate-unit'] as 's' | 'm' | 'h',
     technology: {
       assembler: values.assembler as string,
@@ -121,7 +135,7 @@ async function main() {
 
       requirement = await calculatorService.queryCalculator(
         calculatorUrl,
-        values.item as string,
+        items.join(', '),
         rate,
         config.rateUnit,
         config.version
