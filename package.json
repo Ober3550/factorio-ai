@@ -1,39 +1,39 @@
 {
-  "name": "factorio-ai",
-  "type": "module",
-  "version": "1.0.0",
-  "description": "An exercise in defining the process of composing tools to design factorio blueprints",
-  "main": "index.js",
-  "scripts": {
-    "decode-bp": "node --no-warnings --loader ts-node/esm scripts/decode-blueprint.ts",
-    "bp-ascii": "node --no-warnings --loader ts-node/esm scripts/blueprint-ascii.ts",
-    "decode-and-ascii": "node --no-warnings --loader ts-node/esm scripts/run-decode-and-ascii.ts",
-    "test-ascii": "node --no-warnings --loader ts-node/esm scripts/test-ascii.ts",
-    "bp-meta": "node --no-warnings --loader ts-node/esm scripts/blueprint-metadata.ts",
-    "bp-flow": "node --no-warnings --loader ts-node/esm scripts/blueprint-flow.ts",
-    "compose-bp": "node --no-warnings --loader ts-node/esm scripts/compose-blueprint.ts",
-    "encode-bp": "node --no-warnings --loader ts-node/esm scripts/encode-blueprint.ts"
-  },
+  "author": "Ober3550",
   "bin": {
     "bp-meta": "scripts/blueprint-metadata.ts"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Ober3550/factorio-ai.git"
+  "bugs": {
+    "url": "https://github.com/Ober3550/factorio-ai/issues"
   },
+  "description": "An exercise in defining the process of composing tools to design factorio blueprints",
+  "devDependencies": {
+    "@types/node": "^18.16.19",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.9.3"
+  },
+  "homepage": "https://github.com/Ober3550/factorio-ai#readme",
   "keywords": [
     "factorio",
     "ai"
   ],
-  "author": "Ober3550",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Ober3550/factorio-ai/issues"
+  "main": "index.js",
+  "name": "factorio-ai",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ober3550/factorio-ai.git"
   },
-  "homepage": "https://github.com/Ober3550/factorio-ai#readme",
-  "devDependencies": {
-    "typescript": "^5.9.3",
-    "ts-node": "^10.9.1",
-    "@types/node": "^18.16.19"
-  }
+  "scripts": {
+    "bp-ascii": "node --no-warnings --loader ts-node/esm scripts/blueprint-ascii.ts",
+    "bp-flow": "node --no-warnings --loader ts-node/esm scripts/blueprint-flow.ts",
+    "bp-meta": "node --no-warnings --loader ts-node/esm scripts/blueprint-metadata.ts",
+    "compose-bp": "node --no-warnings --loader ts-node/esm scripts/compose-blueprint.ts",
+    "decode-and-ascii": "node --no-warnings --loader ts-node/esm scripts/run-decode-and-ascii.ts",
+    "decode-bp": "node --no-warnings --loader ts-node/esm scripts/decode-blueprint.ts",
+    "encode-bp": "node --no-warnings --loader ts-node/esm scripts/encode-blueprint.ts",
+    "test-ascii": "node --no-warnings --loader ts-node/esm scripts/test-ascii.ts"
+  },
+  "type": "module",
+  "version": "1.0.0"
 }
