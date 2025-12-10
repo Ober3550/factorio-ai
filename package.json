@@ -13,7 +13,8 @@
     "bp-flow": "node --no-warnings --loader ts-node/esm scripts/blueprint-flow.ts",
     "compose-bp": "node --no-warnings --loader ts-node/esm scripts/compose-blueprint.ts",
     "encode-bp": "node --no-warnings --loader ts-node/esm scripts/encode-blueprint.ts",
-    "calc-req": "tsx scripts/calculate-requirements.ts"
+    "calc-req": "tsx scripts/calculate-requirements.ts",
+    "catalog": "tsx scripts/catalog-blueprint.ts"
   },
   "bin": {
     "bp-meta": "scripts/blueprint-metadata.ts"

@@ -1,0 +1,44 @@
+{
+  "id": "basic-iron-smelting-array",
+  "name": "Basic Iron Smelting Array",
+  "blueprintString": "/Users/oliverm/Workspace/factorio-ai/blueprints/smelting/smelting.bp",
+  "blueprintJson": "/Users/oliverm/Workspace/factorio-ai/blueprints/smelting/smelting.json",
+  "dimensions": {
+    "width": 12,
+    "height": 8
+  },
+  "primaryOutput": {
+    "item": "iron-plate",
+    "rate": 45
+  },
+  "inputs": [
+    {
+      "resource": "iron-ore",
+      "rate": 45,
+      "position": {
+        "x": 0,
+        "y": 4
+      }
+    }
+  ],
+  "outputs": [
+    {
+      "resource": "iron-plate",
+      "rate": 45,
+      "position": {
+        "x": 11,
+        "y": 4
+      }
+    }
+  ],
+  "tags": [
+    "smelting",
+    "iron",
+    "early-game",
+    "beginner-friendly"
+  ],
+  "efficiency": 0.46875,
+  "createdAt": "2025-12-10T02:39:47.963Z",
+  "usageCount": 0,
+  "validated": false
+}
