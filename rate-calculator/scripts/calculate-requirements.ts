@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import type { CalculatorConfig } from '../src/models/calculator-config.js'
-import { validateCalculatorConfig, buildCalculatorUrl } from '../src/models/calculator-config.js'
+import { validateCalculatorConfig, buildCalculatorUrl, parseCalculatorZipUrl } from '../src/models/calculator-config.js'
 import type { ProductionRequirement } from '../src/models/production-requirement.js'
 import { getCacheKey } from '../src/models/production-requirement.js'
 import { SeleniumCalculatorService } from '../src/services/selenium-calculator.js'
@@ -22,6 +22,8 @@ function parseArguments() {
     'clear-cache': false,
     json: false,
     quiet: false,
+    zip: false,
+    'zip-url': undefined,
     rate: undefined,
     output: undefined
   }
@@ -30,7 +32,7 @@ function parseArguments() {
     const arg = args[i]
     if (arg && arg.startsWith('--')) {
       const key = arg.slice(2)
-      if (key === 'no-cache' || key === 'clear-cache' || key === 'json' || key === 'quiet') {
+      if (key === 'no-cache' || key === 'clear-cache' || key === 'json' || key === 'quiet' || key === 'zip') {
         values[key] = true
       } else if (key === 'item') {
         // Collect multiple --item arguments
@@ -65,31 +67,48 @@ try {
 }
 
 async function main() {
-  // Validate required arguments
-  const items = Array.isArray(values.item) ? values.item : []
-  if (items.length === 0 || !values.rate) {
-    console.error('Error: --item (one or more) and --rate are required')
-    console.error('Usage: calculate-requirements --item <item-id> [--item <item-id>...] --rate <number> [options]')
-    process.exit(1)
-  }
+  let config: CalculatorConfig
+  let displayName: string
 
-  const rate = parseFloat(values.rate as string)
-  if (isNaN(rate) || rate <= 0) {
-    console.error('Error: --rate must be a positive number')
-    process.exit(1)
-  }
+  // Handle --zip-url parameter to parse existing zip-encoded URLs
+  if (values['zip-url']) {
+    const parsed = parseCalculatorZipUrl(values['zip-url'] as string)
+    if (!parsed) {
+      console.error('Error: Failed to parse zip-encoded URL')
+      process.exit(1)
+    }
+    config = parsed
+    displayName = config.items.map(item => item.name).join(', ')
+  } else {
+    // Validate required arguments for manual config
+    const items = Array.isArray(values.item) ? values.item : []
+    if (items.length === 0 || !values.rate) {
+      console.error('Error: Either --zip-url OR (--item with --rate) is required')
+      console.error('Usage:')
+      console.error('  calculate-requirements --zip-url <encoded-url>')
+      console.error('  calculate-requirements --item <item-id> [--item <item-id>...] --rate <number> [options]')
+      process.exit(1)
+    }
 
-  // Build calculator config with all items
-  const config: CalculatorConfig = {
-    items: items.map(name => ({ name, rate })),
-    rateUnit: values['rate-unit'] as 's' | 'm' | 'h',
-    technology: {
-      assembler: values.assembler as string,
-      furnace: values.furnace as string,
-      miner: values.miner as string,
-      belt: values.belt as string
-    },
-    version: values.version as string
+    const rate = parseFloat(values.rate as string)
+    if (isNaN(rate) || rate <= 0) {
+      console.error('Error: --rate must be a positive number')
+      process.exit(1)
+    }
+
+    // Build calculator config with all items
+    config = {
+      items: items.map(name => ({ name, rate })),
+      rateUnit: values['rate-unit'] as 's' | 'm' | 'h',
+      technology: {
+        assembler: values.assembler as string,
+        furnace: values.furnace as string,
+        miner: values.miner as string,
+        belt: values.belt as string
+      },
+      version: values.version as string
+    }
+    displayName = items.join(', ')
   }
 
   // Validate config
@@ -99,8 +118,12 @@ async function main() {
     process.exit(1)
   }
 
+  // Automatically use zip encoding for URLs with more than 3 items
+  // (URLs get too long without compression)
+  const useZipEncoding = values.zip === true || config.items.length > 3
+
   // Build calculator URL
-  const calculatorUrl = buildCalculatorUrl(config)
+  const calculatorUrl = buildCalculatorUrl(config, useZipEncoding)
   const cacheKey = getCacheKey(calculatorUrl)
 
   // Initialize services
@@ -135,8 +158,8 @@ async function main() {
 
       requirement = await calculatorService.queryCalculator(
         calculatorUrl,
-        items.join(', '),
-        rate,
+        displayName,
+        config.items[0]?.rate || 1,
         config.rateUnit,
         config.version
       )

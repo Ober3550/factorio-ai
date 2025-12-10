@@ -1,4 +1,7 @@
 // CalculatorConfig: Input configuration for Kirk McDonald calculator query
+import { createRequire } from 'module'
+
+const require = createRequire(import.meta.url)
 
 export interface CalculatorConfig {
   // Target items to produce
@@ -79,9 +82,16 @@ export function validateCalculatorConfig(data: unknown): CalculatorConfig | Vali
 }
 
 // Build calculator URL from config
-export function buildCalculatorUrl(config: CalculatorConfig): string {
+export function buildCalculatorUrl(config: CalculatorConfig, useZipEncoding: boolean = false): string {
   const baseUrl = 'https://kirkmcdonald.github.io/calc.html#'
 
+  if (useZipEncoding) {
+    // Build compressed URL using the zip parameter
+    // This requires the query string to be zlib-compressed and base64-encoded
+    return buildCalculatorUrlWithZip(config, baseUrl)
+  }
+
+  // Original uncompressed URL format
   // Convert version to data format (e.g., "1.1" -> "1-1-110" or use default "2-0-55")
   const dataVersion = config.version === '1.1' ? '1-1-110' : '2-0-55'
 
@@ -104,4 +114,100 @@ export function buildCalculatorUrl(config: CalculatorConfig): string {
   ]
 
   return baseUrl + params.join('&')
+}
+
+// Build calculator URL using zlib compression and base64 encoding
+function buildCalculatorUrlWithZip(config: CalculatorConfig, baseUrl: string): string {
+  const zlib = require('zlib')
+  const Buffer = require('buffer').Buffer
+
+  // Convert version to data format
+  const dataVersion = config.version === '1.1' ? '1-1-110' : '2-0-55'
+
+  // Build items parameter
+  const itemsParam = config.items
+    .map(item => `${item.name}:r:${item.rate}`)
+    .join(',')
+
+  // Build buildings parameter
+  const buildingsParam = [
+    config.technology.assembler,
+    config.technology.furnace
+  ].join(',')
+
+  // Build the query string
+  const queryParams = [
+    `data=${dataVersion}`,
+    `buildings=${buildingsParam}`,
+    `items=${itemsParam}`
+  ]
+  const queryString = queryParams.join('&')
+
+  try {
+    // Use deflateRaw (raw deflate without zlib header) for Kirk McDonald's format
+    const compressed = zlib.deflateRawSync(Buffer.from(queryString))
+    const encoded = compressed.toString('base64')
+    return baseUrl + `zip=${encoded}`
+  } catch (error) {
+    // Fallback to uncompressed if compression fails
+    console.error('Zip encoding failed, using uncompressed URL:', error)
+    return baseUrl + queryParams.join('&')
+  }
+}
+
+// Parse a zip-encoded calculator URL and extract config
+export function parseCalculatorZipUrl(zipEncoded: string): CalculatorConfig | null {
+  try {
+    const zlib = require('zlib')
+    const Buffer = require('buffer').Buffer
+
+    // Decode from base64
+    const compressed = Buffer.from(zipEncoded, 'base64')
+    // Decompress using inflateRaw (raw deflate without zlib header)
+    const decompressed = zlib.inflateRawSync(compressed)
+    const queryString = decompressed.toString('utf-8')
+
+    // Parse the query string
+    const params = new URLSearchParams(queryString)
+
+    // Extract version
+    const dataParam = params.get('data') || '2-0-55'
+    const version = dataParam.startsWith('1-1') ? '1.1' : '2.0'
+
+    // Extract rate unit (not in zip format, default to 'm')
+    const rateUnit = 'm' as const
+
+    // Extract buildings (single building in Kirk's format, we'll assume assembler)
+    const buildingsStr = params.get('buildings') || 'assembling-machine-2'
+    const buildings = buildingsStr.split(',')
+
+    // Extract items
+    const itemsStr = params.get('items') || ''
+    const items = itemsStr.split(',').map(item => {
+      const parts = item.split(':r:')
+      return {
+        name: parts[0] || '',
+        rate: parseFloat(parts[1] || '1')
+      }
+    }).filter(item => !isNaN(item.rate) && item.name.trim())
+
+    if (items.length === 0) {
+      return null
+    }
+
+    return {
+      items,
+      rateUnit,
+      technology: {
+        assembler: buildings[0] || 'assembling-machine-2',
+        furnace: buildings[1] || 'stone-furnace',
+        miner: 'electric-mining-drill',
+        belt: 'fast-transport-belt'
+      },
+      version
+    }
+  } catch (error) {
+    console.error('Failed to parse zip-encoded URL:', error)
+    return null
+  }
 }
