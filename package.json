@@ -12,7 +12,8 @@
     "bp-meta": "node --no-warnings --loader ts-node/esm scripts/blueprint-metadata.ts",
     "bp-flow": "node --no-warnings --loader ts-node/esm scripts/blueprint-flow.ts",
     "compose-bp": "node --no-warnings --loader ts-node/esm scripts/compose-blueprint.ts",
-    "encode-bp": "node --no-warnings --loader ts-node/esm scripts/encode-blueprint.ts"
+    "encode-bp": "node --no-warnings --loader ts-node/esm scripts/encode-blueprint.ts",
+    "calc-req": "tsx scripts/calculate-requirements.ts"
   },
   "bin": {
     "bp-meta": "scripts/blueprint-metadata.ts"
@@ -32,8 +33,13 @@
   },
   "homepage": "https://github.com/Ober3550/factorio-ai#readme",
   "devDependencies": {
-    "typescript": "^5.9.3",
+    "@types/node": "^18.19.130",
     "ts-node": "^10.9.1",
-    "@types/node": "^18.16.19"
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "@types/selenium-webdriver": "^4.35.4",
+    "selenium-webdriver": "^4.39.0"
   }
 }

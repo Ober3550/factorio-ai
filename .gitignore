@@ -1,2 +1,20 @@
 node_modules/
 dist/
+
+# Cache and output directories
+.factorio-cache/
+factory-designs/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+npm-debug.log*
